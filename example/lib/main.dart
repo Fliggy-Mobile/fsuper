@@ -23,36 +23,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-//      home: Scaffold(
-//        appBar: AppBar(
-//          backgroundColor: Color(0xffffc900),
-//          title: const Text('FSuper'),
-//          centerTitle: true,
-//        ),
-//          body: FSuper(
-//            text: text,
-////            padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
-//            backgroundColor: Colors.blue,
-//            child1: Icon(Icons.check_circle),
-//            child1Alignment: Alignment.bottomRight,
-////            child1Margin: EdgeInsets.all(20),
-//            margin: EdgeInsets.all(20),
-////            padding: EdgeInsets.all(50),
-//            redPoint: true,
-//            onChild1Click: () {
-//              setState(() {
-//                text = "哈哈哈哈哈哈哈哈哈😂，变了变了！";
-//              });
-//            },
-//          )
-////        body: GestureDetector(
-////            onTap: (){
-////              setState(() {
-////                text = "asdfasdfsadfdsfsda";
-////              });
-////            },
-////            child: Test(text)),
-//      ),
       home: FSuperPage(),
     );
   }
@@ -672,6 +642,7 @@ class _FSuperPageState extends State<FSuperPage> {
                         Align(
                           alignment: Alignment.topRight,
                           child: FSuper(
+                            maxWidth: 220,
                             text: 'Hi, Welcome to use FWidget.',
                             padding: EdgeInsets.only(
                                 left: 12, right: 12, top: 15, bottom: 15),
@@ -696,6 +667,7 @@ class _FSuperPageState extends State<FSuperPage> {
                         Align(
                           alignment: Alignment.topLeft,
                           child: FSuper(
+                            maxWidth: 220,
                             text: 'FWidget is great!Very useful!',
                             textAlign: TextAlign.left,
                             padding: EdgeInsets.only(
@@ -721,6 +693,8 @@ class _FSuperPageState extends State<FSuperPage> {
                         Align(
                           alignment: Alignment.topRight,
                           child: FSuper(
+                            maxWidth: 220,
+                            textAlign: TextAlign.left,
                             text: "I'm created by FSuper 😄",
                             padding: EdgeInsets.only(
                                 left: 12, right: 12, top: 15, bottom: 15),
@@ -745,6 +719,7 @@ class _FSuperPageState extends State<FSuperPage> {
                         Align(
                           alignment: Alignment.topLeft,
                           child: FSuper(
+                            maxWidth: 220,
                             text: "So am I 😄",
                             textAlign: TextAlign.left,
                             padding: EdgeInsets.only(

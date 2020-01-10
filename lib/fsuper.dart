@@ -15,6 +15,8 @@ enum AlignTextMode {
 class FSuper extends StatefulWidget {
   double width;
   double height;
+  double maxWidth;
+  double maxHeight;
   String text;
   Color textColor;
   double textSize;
@@ -55,6 +57,8 @@ class FSuper extends StatefulWidget {
   FSuper({
     this.width,
     this.height,
+    this.maxWidth,
+    this.maxHeight,
     this.text,
     this.textColor,
     this.textSize,
@@ -132,9 +136,17 @@ class _FSuperState extends State<FSuper> {
     if (!mounted) return;
     var renderBox =
         textContainerKey.currentContext.findRenderObject() as RenderBox;
-    if (containerSize != renderBox.size) {
+    if (containerSize != renderBox.size ||
+        (widget.maxHeight != null &&
+            renderBox.size.height > widget.maxHeight)) {
       setState(() {
-        containerSize = renderBox.size;
+        if (widget.maxHeight != null &&
+            renderBox.size.height > widget.maxHeight) {
+          containerSize = Size(renderBox.size.width, widget.maxHeight);
+          widget.height = widget.maxHeight;
+        } else {
+          containerSize = renderBox.size;
+        }
       });
 //      print("_handleSizeChanged.setState");
     }
@@ -220,6 +232,9 @@ class _FSuperState extends State<FSuper> {
     if (widget.padding != null) {
       if (textWidth != null) {
         textWidth += widget.padding.horizontal;
+        if (widget.maxWidth != null && textWidth > widget.maxWidth) {
+          widget.width = widget.maxWidth;
+        }
       }
     }
     List<Widget> children = [];
@@ -242,41 +257,10 @@ class _FSuperState extends State<FSuper> {
     }
 
     if (widget.redPoint) {
-      bool redPointTextEmpty =
-          widget.redPointText == null || widget.redPointText == "";
-      double redPointTextSize = redPointTextEmpty ? 0 : widget.redPointTextSize;
-      var offset = widget.redPointOffset ??
-          Offset(widget.redPointSize / 2, widget.redPointSize / 2);
-      var redPointPart = Positioned(
-        right: -offset.dx,
-        top: -offset.dy,
-        child: Container(
-          padding: EdgeInsets.fromLTRB(
-              redPointTextSize / 2, 0, redPointTextSize / 2, 0),
-          constraints: BoxConstraints(
-            minWidth: widget.redPointSize,
-            maxHeight: widget.redPointSize,
-          ),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Colors.redAccent,
-            borderRadius:
-                BorderRadius.all(Radius.circular(widget.redPointSize / 2)),
-          ),
-          child: redPointTextEmpty
-              ? null
-              : Text(
-                  widget.redPointText ?? "",
-                  style: TextStyle(
-                      color: widget.redPointTextColor,
-                      fontSize: redPointTextSize),
-                ),
-        ),
-      );
+      var redPointPart = _buildRedPoint();
       children.add(redPointPart);
     }
     var stackPart = Stack(
-//      alignment: Alignment.centerRight,
       overflow: Overflow.visible,
       children: children,
     );
@@ -334,6 +318,41 @@ class _FSuperState extends State<FSuper> {
       ),
     );
     return childPart;
+  }
+
+  Positioned _buildRedPoint() {
+    bool redPointTextEmpty =
+        widget.redPointText == null || widget.redPointText == "";
+    double redPointTextSize = redPointTextEmpty ? 0 : widget.redPointTextSize;
+    var offset = widget.redPointOffset ??
+        Offset(widget.redPointSize / 2, widget.redPointSize / 2);
+    var redPointPart = Positioned(
+      right: -offset.dx,
+      top: -offset.dy,
+      child: Container(
+        padding: EdgeInsets.fromLTRB(
+            redPointTextSize / 2, 0, redPointTextSize / 2, 0),
+        constraints: BoxConstraints(
+          minWidth: widget.redPointSize,
+          maxHeight: widget.redPointSize,
+        ),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Colors.redAccent,
+          borderRadius:
+              BorderRadius.all(Radius.circular(widget.redPointSize / 2)),
+        ),
+        child: redPointTextEmpty
+            ? null
+            : Text(
+                widget.redPointText ?? "",
+                style: TextStyle(
+                    color: widget.redPointTextColor,
+                    fontSize: redPointTextSize),
+              ),
+      ),
+    );
+    return redPointPart;
   }
 }
 
