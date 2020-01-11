@@ -60,6 +60,7 @@ class _FSuperPageState extends State<FSuperPage> {
                   FSuper(
                     margin: EdgeInsets.fromLTRB(12, 0, 12, 0),
                     width: double.infinity,
+                    maxHeight: 300,
                     text: "This is FSuper!",
                     backgroundColor: Color(0xffffc900),
                   ),

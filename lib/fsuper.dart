@@ -27,7 +27,12 @@ class FSuper extends StatefulWidget {
   List<TextSpan> spans;
   GestureTapCallback onClick;
   Color backgroundColor;
+  Gradient gradient;
   ImageProvider backgroundImage;
+  Corner corner;
+  CornerStyle cornerStyle;
+  EdgeInsetsGeometry padding;
+  EdgeInsets margin;
   Widget child1;
   Alignment child1Alignment;
   EdgeInsets child1Margin;
@@ -43,16 +48,11 @@ class FSuper extends StatefulWidget {
   Color redPointTextColor;
   double redPointTextSize;
   Offset redPointOffset;
-  Gradient gradient;
-  EdgeInsetsGeometry padding;
-  Corner corner;
-  CornerStyle cornerStyle;
   Color strokeColor;
   double strokeWidth;
   Color shadowColor;
   Offset shadowOffset;
   double shadowBlur;
-  EdgeInsets margin;
 
   FSuper({
     this.width,
@@ -219,7 +219,7 @@ class _FSuperState extends State<FSuper> {
     );
 
     double textWidth;
-    if (widget.width == null || widget.height == null) {
+    if (widget.width == null) {
       var textRenderObjectWidget =
           (textPart.build(context) as RenderObjectWidget);
       // ignore: invalid_use_of_protected_member
@@ -229,12 +229,13 @@ class _FSuperState extends State<FSuper> {
         textWidth = textRenderObject.paintBounds.width;
       }
     }
-    if (widget.padding != null) {
-      if (textWidth != null) {
-        textWidth += widget.padding.horizontal;
-        if (widget.maxWidth != null && textWidth > widget.maxWidth) {
-          widget.width = widget.maxWidth;
-        }
+    if (widget.padding != null && textWidth != null) {
+      textWidth += widget.padding.horizontal;
+    }
+    if (widget.maxWidth != null) {
+      if ((textWidth != null && textWidth > widget.maxWidth) ||
+          (widget.width != null && widget.width > widget.maxWidth)) {
+        widget.width = widget.maxWidth;
       }
     }
     List<Widget> children = [];
