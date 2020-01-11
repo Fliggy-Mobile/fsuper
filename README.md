@@ -4,7 +4,7 @@
 
 # fapi/fsuper
 
-![](https://badgen.net/badge/tnpm/0.1.0/blue)
+![](https://badgen.net/badge/tnpm/0.1.1/blue)
 
 > [使用前请参考【Flutter组件开发使用指南】](https://yuque.antfin-inc.com/hummingbird/flutter-guide/sv9shr)
 
