@@ -138,12 +138,24 @@ class _FSuperState extends State<FSuper> {
         textContainerKey.currentContext.findRenderObject() as RenderBox;
     if (containerSize != renderBox.size ||
         (widget.maxHeight != null &&
-            renderBox.size.height > widget.maxHeight)) {
+            renderBox.size.height > widget.maxHeight) ||
+        (widget.maxWidth != null && renderBox.size.width > widget.maxWidth)) {
       setState(() {
-        if (widget.maxHeight != null &&
-            renderBox.size.height > widget.maxHeight) {
-          containerSize = Size(renderBox.size.width, widget.maxHeight);
-          widget.height = widget.maxHeight;
+        if ((widget.maxHeight != null &&
+                renderBox.size.height > widget.maxHeight) ||
+            (widget.maxWidth != null &&
+                renderBox.size.width > widget.maxWidth)) {
+          containerSize = Size(renderBox.size.width, renderBox.size.height);
+          if (widget.maxHeight != null &&
+              renderBox.size.height > widget.maxHeight) {
+            containerSize = Size(containerSize.width, widget.maxHeight);
+            widget.height = widget.maxHeight;
+          }
+          if (widget.maxWidth != null &&
+              renderBox.size.width > widget.maxWidth) {
+            containerSize = Size(widget.maxWidth, containerSize.height);
+            widget.width = widget.maxWidth;
+          }
         } else {
           containerSize = renderBox.size;
         }
@@ -217,27 +229,6 @@ class _FSuperState extends State<FSuper> {
         fontWeight: widget.textWeight,
       ),
     );
-
-    double textWidth;
-    if (widget.width == null) {
-      var textRenderObjectWidget =
-          (textPart.build(context) as RenderObjectWidget);
-      // ignore: invalid_use_of_protected_member
-      var textRenderObject = textRenderObjectWidget.createRenderObject(context);
-      textRenderObject.layout(BoxConstraints());
-      if (widget.width == null) {
-        textWidth = textRenderObject.paintBounds.width;
-      }
-    }
-    if (widget.padding != null && textWidth != null) {
-      textWidth += widget.padding.horizontal;
-    }
-    if (widget.maxWidth != null) {
-      if ((textWidth != null && textWidth > widget.maxWidth) ||
-          (widget.width != null && widget.width > widget.maxWidth)) {
-        widget.width = widget.maxWidth;
-      }
-    }
     List<Widget> children = [];
     var containerPart = Container(
       key: textContainerKey,
