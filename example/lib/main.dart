@@ -47,6 +47,7 @@ class _FSuperPageState extends State<FSuperPage> {
         body: Builder(
           builder: (context) {
             return SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Column(
                 children: <Widget>[
                   _buildTitle("Size & Rich Text"),

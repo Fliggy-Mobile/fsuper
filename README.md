@@ -4,7 +4,7 @@
 
 # fapi/fsuper
 
-![](https://badgen.net/badge/tnpm/0.1.3/blue)
+![](https://badgen.net/badge/tnpm/0.1.4/blue)
 
 > [使用前请参考【Flutter组件开发使用指南】](https://yuque.antfin-inc.com/hummingbird/flutter-guide/sv9shr)
 
@@ -41,6 +41,7 @@
 |textSize|double|否|null|字体大小|
 |textStyle|FontStyle|否|null|字体样式|
 |textWeight|FontWeight|否|null|字体粗细|
+|fontHeight|double|否|null|一行文字的高度 = textSize * fontHeight|
 |textAlign|TextAlign|否|TextAlign.center|文本的对齐方式|
 |spans|List<TextSpan>|否|null|富文本。可以接到 text 文本之后，默认会继承 text 的配置。可以通过 TextStyle 单独设置|
 |onClick|GestureTapCallback|否|null|设置 FSuper 的点击事件|
