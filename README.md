@@ -13,17 +13,31 @@
 
 <p>It supports rich text, rounded corners, borders, pictures, small red dots, and set up to two sub-components at the same time, and control their relative positions.</p>
 
-<p><strong>Author：Newton(coorchice.cb@alibaba-inc.com)</strong></p>
-
+<p><strong>Author：<a href="https://github.com/chenBingX">Newton</a>(<a href="coorchice.cb@alibaba-inc.com">coorchice.cb@alibaba-inc.com</a>)</strong></p>
 <p>
 
 <a href="https://github.com/Fliggy-Android-Team/fsuper">
-  <img height="20" src="https://img.shields.io/badge/Version-0.1.4-green.svg">
+    <img height="20" src="https://img.shields.io/badge/Version-0.1.4-important.svg">
+</a>
+
+
+<a href="https://github.com/Fliggy-Android-Team/fsuper">
+    <img height="20" src="https://img.shields.io/badge/Build-passing-brightgreen.svg">
+</a>
+
+
+<a href="https://github.com/Fliggy-Android-Team">
+    <img height="20" src="https://img.shields.io/badge/Team-FAT-ffc900.svg">
+</a>
+
+<a href="https://www.dartcn.com/">
+    <img height="20" src="https://img.shields.io/badge/Language-Dart-blue.svg">
 </a>
 
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">
- <img height="20" src="https://img.shields.io/badge/License-Apache--2.0-blue.svg">
+   <img height="20" src="https://img.shields.io/badge/License-Apache--2.0-blueviolet.svg">
 </a>
+
 
 <p>
 <p>

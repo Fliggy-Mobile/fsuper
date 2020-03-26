@@ -13,16 +13,30 @@
 
 <p>支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。</p>
 
-<p><strong>主理人：纽特(coorchice.cb@alibaba-inc.com)</strong></p>
+<p><strong>主理人：<a href="https://github.com/chenBingX">纽特</a>(<a href="coorchice.cb@alibaba-inc.com">coorchice.cb@alibaba-inc.com</a>)</strong></p>
 
 <p>
 
 <a href="https://github.com/Fliggy-Android-Team/fsuper">
-  <img height="20" src="https://img.shields.io/badge/Version-0.1.4-green.svg">
+    <img height="20" src="https://img.shields.io/badge/Version-0.1.4-important.svg">
+</a>
+
+
+<a href="https://github.com/Fliggy-Android-Team/fsuper">
+    <img height="20" src="https://img.shields.io/badge/Build-passing-brightgreen.svg">
+</a>
+
+
+<a href="https://github.com/Fliggy-Android-Team">
+    <img height="20" src="https://img.shields.io/badge/Team-FAT-ffc900.svg">
+</a>
+
+<a href="https://www.dartcn.com/">
+    <img height="20" src="https://img.shields.io/badge/Language-Dart-blue.svg">
 </a>
 
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">
- <img height="20" src="https://img.shields.io/badge/License-Apache--2.0-blue.svg">
+   <img height="20" src="https://img.shields.io/badge/License-Apache--2.0-blueviolet.svg">
 </a>
 
 <p>
