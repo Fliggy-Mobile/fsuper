@@ -35,7 +35,7 @@
 </a>
 
 <a href="https://pub.dev/documentation/fsuper/latest/fsuper/fsuper-library.html">
-    <img height="20" src="https://img.shields.io/badge/Api-done-yellowgreen.svg">
+    <img height="20" src="https://img.shields.io/badge/API-done-yellowgreen.svg">
 </a>
 
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">
@@ -394,7 +394,7 @@ dependencies:
   fsuper: ^<version number>
 ```
 
-> ⚠️ Attention, please go to [**pub**] (https://pub.dev/packages/fsuper) to get the latest version number of **FSuper**
+> ⚠️ Attention, please go to [**pub**](https://pub.dev/packages/fsuper) to get the latest version number of **FSuper**
 
 ## 🖥 git dependencies
 
@@ -406,7 +406,7 @@ dependencies:
       ref: '<Branch number or tag number>'
 ```
 
-> ⚠️ Attention，Please refer to the official project of [**FSuper**] (https://github.com/Fliggy-Android-Team/fsuper) for the branch number or tag.
+> ⚠️ Attention，Please refer to the official project of [**FSuper**](https://github.com/Fliggy-Android-Team/fsuper) for the branch number or tag.
 
 
 # 💡 License
@@ -428,4 +428,4 @@ limitations under the License.
 
 ```
 
-### Like it? Please cast your **Star** 🥰!
+### Like it? Please cast your [**Star**](https://github.com/Fliggy-Android-Team/fsuper) 🥰!

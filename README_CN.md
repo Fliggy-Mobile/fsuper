@@ -36,7 +36,7 @@
 </a>
 
 <a href="https://pub.dev/documentation/fsuper/latest/fsuper/fsuper-library.html">
-    <img height="20" src="https://img.shields.io/badge/Api-done-yellowgreen.svg">
+    <img height="20" src="https://img.shields.io/badge/API-done-yellowgreen.svg">
 </a>
 
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">
@@ -429,4 +429,4 @@ limitations under the License.
 
 ```
 
-### 感觉还不错？请投出您的 **Star** 吧 🥰 ！
+### 感觉还不错？请投出您的 [**Star**](https://github.com/Fliggy-Android-Team/fsuper) 吧 🥰 ！
