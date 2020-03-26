@@ -1,21 +1,61 @@
-# FSuper
 
-<a href="https://github.com/Fliggy-Android-Team"><img width=128 src="https://gw.alicdn.com/tfs/TB1a288sxD1gK0jSZFKXXcJrVXa-360-360.png"/></a>
+<p align="center">
+  <a href="https://github.com/Fliggy-Android-Team">
+    <img width="200" src="https://gw.alicdn.com/tfs/TB1a288sxD1gK0jSZFKXXcJrVXa-360-360.png">
+  </a>
+</p>
 
-# fwidgets/fsuper
+<h1 align="center">FSuper</h1>
 
-[![](https://badgen.net/badge/version/0.1.4/green)]()
-[![](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
-* 主理人：纽特 <coorchice.cb@alibaba-inc.com>
+<div align="center">
 
-# 使用指南
+<p><strong>FSuper</strong> 能够帮助开发者快速舒适的构建复杂视图。</p>
 
-**FSuper** 是一个强大的组件，能够支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。**FSuper** 能够帮助开发者快速舒适的构建复杂视图。
+<p><strong>FSuper</strong> 是一个强大的组件，能够支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。</p>
 
-## 参数
 
-### 基础参数
+<a href="javascript:void(0)">
+ <img height="20" src="https://badgen.net/badge/version/0.1.4/green">
+</a>
+
+<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">
+ <img height="20" src="https://img.shields.io/badge/License-Apache--2.0-blue.svg">
+</a>
+
+<p>
+
+<p><strong>fwidgets/fsuper</strong></p>
+
+<p><strong>主理人：纽特(coorchice.cb@alibaba-inc.com)</strong></p>
+
+<img height="500" src="https://raw.githubusercontent.com/chenBingX/img/master/Flutter/fsuper/fsuper_all.jpg">
+
+</div>
+
+
+# ✨ 特性
+
+- 丰富的 **边角** 效果
+
+- 精美的 **边框** 装饰
+
+- 天然支持精彩的 **富文本**
+
+- **渐变效果** 也不在话下
+
+- 更具空间感的 **阴影**
+
+- 不简单的 **小红点**
+
+- 灵活且强大的 **相对位置布局**
+
+
+# 🛠 使用指南
+
+## ⚙️ 参数
+
+### 🔩 基础参数
 
 |参数|类型|必要|默认值|说明|
 |---|---|:---:|---|---|
@@ -42,7 +82,7 @@
 |onClick|GestureTapCallback|否|null|设置 FSuper 的点击事件|
 
 
-### 子组件参数
+### 🧸 子组件参数
 
 |参数|类型|必要|默认值|说明|
 |---|---|:---:|---|---|
@@ -55,7 +95,7 @@
 |child2Margin|EdgeInsets|否|null|子组件2基于相对位置的偏移|
 |onChi2d1Click|GestureTapCallback|否|null|子组件2的点击事件|
 
-### 小红点参数
+### 🎈 小红点参数
 
 |参数|类型|必要|默认值|说明|
 |---|---|:---:|---|---|
@@ -67,7 +107,7 @@
 |redPointTextSize|double|否|null|小红点上的文本字体大小|
 |redPointOffset|Offset|否|null|小红点向右上方的位置偏移量。Offset(0,0)小红点在 FSuper 的右上角。默认会向右上方偏移小红点size的1/4|
 
-### 边框参数
+### 🖼 边框参数
 
 |参数|类型|必要|默认值|说明|
 |---|---|:---:|---|---|
@@ -75,7 +115,7 @@
 |strokeColor|Color|否|null|边框颜色|
 
 
-### 阴影参数
+### 🔳 阴影参数
 
 |参数|类型|必要|默认值|说明|
 |---|---|:---:|---|---|
@@ -85,9 +125,9 @@
 
 
 
-## 使用示例
+## 📺 使用示例
 
-### 基本使用
+### 🔩 基本使用
 
 ![](https://gw.alicdn.com/tfs/TB1GwWEtRv0gK0jSZKbXXbK2FXa-856-580.png)
 
@@ -128,7 +168,7 @@ FSuper(
 
 此外，**FSuper** 还提供了 `maxWidth` 和 `maxHeight` 来辅助布局，这在一个不确定组件大小的情况下十分有用。你的组件将始终不能超过它们的限制。
 
-### 圆角和边框
+## 🖼 圆角和边框
 
 ![](https://gw.alicdn.com/tfs/TB1PCWDtKL2gK0jSZPhXXahvXXa-854-860.png)
 
@@ -165,7 +205,7 @@ FSuper(
 
 如果你想要边框，只需要让 **FSuper** 的 `strokeWidth > 0` 就可以了。此外，`strokeColor` 属性让你能够描述边框的颜色。
 
-### 渐变和阴影
+## 🔳 渐变和阴影
 
 ![](https://gw.alicdn.com/tfs/TB1kz9EtKT2gK0jSZFvXXXnFXXa-852-580.png)
 
@@ -214,7 +254,7 @@ FSuper(
 
 如果你在考虑为组件添加阴影效果，那使用 **FSuper** 就是一个绝佳的选择。
 
-### 小红点
+## 🎈 小红点
 
 ![](https://gw.alicdn.com/tfs/TB1TpN6tF67gK0jSZPfXXahhFXa-858-662.png)
 
@@ -239,7 +279,7 @@ FSuper(
 一条龙服务，满足你的所有需求。
 
 
-### 子组件
+## 🧸 子组件
 
 ![](https://gw.alicdn.com/tfs/TB10XKGtKH2gK0jSZFEXXcqMpXa-856-848.png)
 
@@ -290,7 +330,7 @@ FSuper(
 
 图中这些组件效果，均只需要一个 **FSuper** 组件就能够完成。
 
-### 更多示例
+## 🎞 更多示例
 
 ![](https://gw.alicdn.com/tfs/TB1__eItHj1gK0jSZFOXXc7GpXa-854-1542.png)
 
@@ -325,7 +365,7 @@ FSuper(
 ),
 ```
 
-# License
+# 💡 License
 
 ```
 Copyright 1999-2020 Fliggy Android Team <alitrip_android@list.alibaba-inc.com>.
