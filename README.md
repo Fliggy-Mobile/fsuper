@@ -18,7 +18,7 @@
 <p>
 
 <a href="javascript:void(0)">
- <img height="20" src="https://badgen.net/badge/version/0.1.4/green">
+  <img height="20" src="https://img.shields.io/badge/Version-0.1.4-green.svg">
 </a>
 
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">
