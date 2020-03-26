@@ -17,7 +17,7 @@
 
 <p>
 
-<a href="javascript:void(0)">
+<a href="https://github.com/Fliggy-Android-Team/fsuper">
   <img height="20" src="https://img.shields.io/badge/Version-0.1.4-green.svg">
 </a>
 
