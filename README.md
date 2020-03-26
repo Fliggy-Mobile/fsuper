@@ -1,4 +1,3 @@
-
 <p align="center">
   <a href="https://github.com/Fliggy-Android-Team">
     <img width="200" src="https://gw.alicdn.com/tfs/TB1a288sxD1gK0jSZFKXXcJrVXa-360-360.png">
@@ -10,14 +9,11 @@
 
 <div align="center">
 
-
-
 <p><strong>FSuper</strong> 能够帮助开发者快速舒适的构建复杂视图。</p>
 
-<p><strong>FSuper</strong> 是一个强大的组件，能够支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。</p>
+<p>支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。</p>
 
 <p><strong>主理人：纽特(coorchice.cb@alibaba-inc.com)</strong></p>
-
 
 <p>
 
@@ -37,7 +33,6 @@
 </div>
 
 **[English](asdfsadf) | 简体中文**
-
 
 # ✨ 特性
 
