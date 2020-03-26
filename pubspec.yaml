@@ -1,7 +1,7 @@
 name: fsuper
 description: FSuper can help developers build complex views quickly and comfortably.
 version: 0.1.4
-author: CoorChice <coorchice.cb@alibaba-inc.com>
+author: CoorChice<coorchice.cb@alibaba-inc.com>
 homepage: https://github.com/Fliggy-Android-Team/fsuper
 
 environment:
