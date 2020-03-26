@@ -32,7 +32,7 @@
 
 </div>
 
-**English | [简体中文](https://github.com/Fliggy-Android-Team/fsuper/blob/master/README_CN.md)**
+**[English](https://github.com/Fliggy-Android-Team/fsuper) | 简体中文**
 
 # ✨ 特性
 
