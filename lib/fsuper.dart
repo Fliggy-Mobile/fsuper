@@ -26,7 +26,7 @@ enum CornerStyle {
   bevel,
 }
 
-/// FSuper 是一个强大的组件，能够支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。
+/// FSuper 是一个强大的组件，能够支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且能够通过相对位置控制它们。
 /// FSuper 能够帮助开发者快速舒适的构建复杂视图。
 ///
 /// FSuper is a powerful component that can support rich text, rounded corners, borders, pictures, small red dots, and set up to two sub-components at the same time, and control their relative positions.
@@ -337,7 +337,6 @@ class _FSuperState extends State<FSuper> {
   /// Finally, the drawing will be triggered again.
   @override
   void initState() {
-//    print("initState");
     WidgetsBinding.instance.addPostFrameCallback(_handleSizeChanged);
     super.initState();
   }
@@ -349,15 +348,12 @@ class _FSuperState extends State<FSuper> {
       setState(() {
         containerSize = box.size;
       });
-//      print("_handleSizeChanged.setState");
     }
     WidgetsBinding.instance.addPostFrameCallback(_handleSizeChanged);
-//    print("_handleSizeChanged");
   }
 
   @override
   Widget build(BuildContext context) {
-//    print("build");
     var themeData = Theme.of(context);
     var textTheme = themeData.textTheme;
     widget.textColor = widget.textColor ?? textTheme.body1.color;

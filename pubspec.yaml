@@ -1,8 +1,8 @@
 name: fsuper
 description: A new Flutter plugin.
-version: 0.0.1
-author:
-homepage:
+version: 0.1.4
+author: CoorChice <coorchice.cb@alibaba-inc.com>
+homepage: https://github.com/Fliggy-Android-Team/fsuper
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

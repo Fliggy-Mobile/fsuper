@@ -2,9 +2,10 @@
 
 <a href="https://github.com/Fliggy-Android-Team"><img width=128 src="https://gw.alicdn.com/tfs/TB1a288sxD1gK0jSZFKXXcJrVXa-360-360.png"/></a>
 
-# fapi/fsuper
+# fwidgets/fsuper
 
-![](https://badgen.net/badge/tnpm/0.1.4/blue)
+[![](https://badgen.net/badge/version/0.1.4/green)]()
+[![](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
 * 主理人：纽特 <coorchice.cb@alibaba-inc.com>
 
