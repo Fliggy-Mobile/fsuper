@@ -9,11 +9,11 @@
 
 <div align="center">
 
-<p><strong>FSuper</strong> 能够帮助开发者快速舒适的构建复杂视图。</p>
+<p><strong>FSuper</strong> can help developers build complex views quickly and comfortably.</p>
 
-<p>支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。</p>
+<p>It supports rich text, rounded corners, borders, pictures, small red dots, and set up to two sub-components at the same time, and control their relative positions.</p>
 
-<p><strong>主理人：纽特(coorchice.cb@alibaba-inc.com)</strong></p>
+<p><strong>Author：Newton(coorchice.cb@alibaba-inc.com)</strong></p>
 
 <p>
 
@@ -34,100 +34,99 @@
 
 **English | [简体中文](https://github.com/Fliggy-Android-Team/fsuper/blob/master/README_CN.md)**
 
-# ✨ 特性
+# ✨ Features
 
-- 丰富的 **边角** 效果
+- Rich **corner** effect
 
-- 精美的 **边框** 装饰
+- Exquisite **border** decoration
 
-- 天然支持精彩的 **富文本**
+- Naturally supports wonderful **rich text**
 
-- **渐变效果** 也不在话下
+- **Gradient effect**
 
-- 更具空间感的 **阴影**
+- More sense of space **Shadow**
 
-- 不简单的 **小红点**
+- Not simple **Red Point**
 
-- 灵活且强大的 **相对位置布局**
+- Flexible and powerful **relative layout**
 
 
-# 🛠 使用指南
+# 🛠 Guide
 
-## ⚙️ 参数
+## ⚙️ Parameters
 
-### 🔩 基础参数
+### 🔩 Basic parameters
 
-|参数|类型|必要|默认值|说明|
+|Param|Type|Necessary|Default|desc|
 |---|---|:---:|---|---|
-|width|double|否|null|宽度|
-|height|double|否|null|高度。不能设置为 double.infinity|
-|maxWidth|double|否|null|最大宽度。如果 width > maxWidth，会覆盖 width。如果没有 width，最大扩展宽度为 maxWidth|
-|maxHeight|double|否|null|最大高度。如果 height > maxHeight，会覆盖 height。如果没有 height，最大扩展宽度为 maxHeight|
-|maxHeight|double|否|null|最大高度。如果 height > maxHeight，会覆盖 height。如果没有 height，最大扩展宽度为 maxHeight|
-|backgroundColor|Color|否|null|背景颜色|
-|backgroundImage|ImageProvider|否|null|背景图。会覆盖 backgroundColor 和 gradient|
-|gradient|Gradient|否|null|渐变色。会覆盖 backgroundColor|
-|padding|EdgeInsetsGeometry|否|null|文本和各边的边距。这十分有用，通过它来给 FSuper 中的 child 预留展示空间|
-|margin|EdgeInsets|否|null|FSuper 在父容器中的边距|
-|corner|Corner|否|null|边角大小|
-|cornerStyle|CornerStyle|否|CornerStyle.round|边角样式。默认为圆角，设置 CornerStyle.bevel 为斜角|
-|text|String|否|null|文本|
-|textColor|Color|否|null|字体颜色|
-|textSize|double|否|null|字体大小|
-|textStyle|FontStyle|否|null|字体样式|
-|textWeight|FontWeight|否|null|字体粗细|
-|fontHeight|double|否|null|一行文字的高度 = textSize * fontHeight|
-|textAlign|TextAlign|否|TextAlign.center|文本的对齐方式|
-|spans|List<TextSpan>|否|null|富文本。可以接到 text 文本之后，默认会继承 text 的配置。可以通过 TextStyle 单独设置|
-|onClick|GestureTapCallback|否|null|设置 FSuper 的点击事件|
+|width|double|false|null|width|
+|height|double|false|null|height. can not be double.infinity|
+|maxWidth|double|false|null|maxWidth. If width> maxWidth, width is overridden. If there is no width, the maximum expanded width is maxWidth|
+|maxHeight|double|false|null|maxHeight. If height> maxHeight, height is overridden. If there is no height, the maximum extension width is maxHeight|
+|backgroundColor|Color|false|null|background color|
+|backgroundImage|ImageProvider|false|null|Background illustration. Overrides backgroundColor and gradient|
+|gradient|Gradient|false|null|Gradient. Will be overwriting backgroundColor|
+|padding|EdgeInsetsGeometry|false|null|Text and margins on each side. This is very useful to reserve space for children in FSuper|
+|margin|EdgeInsets|false|null|FSuper margins in parent container|
+|corner|Corner|false|null|Corner size|
+|cornerStyle|CornerStyle|false|CornerStyle.round|Corner style. Rounded by default, set CornerStyle.bevel to bevel|
+|text|String|false|null|Text content|
+|textColor|Color|false|null|Font color|
+|textSize|double|false|null|Font size|
+|textStyle|FontStyle|false|null|Font style|
+|textWeight|FontWeight|false|null|Font style|
+|fontHeight|double|false|null|Height of a line of text = textSize * fontHeight|
+|textAlign|TextAlign|false|TextAlign.center|Text alignment|
+|spans|List<TextSpan>|false|null|Rich text. After receiving text, the text configuration will be inherited by default. Can be set individually via TextStyle|
+|onClick|GestureTapCallback|false|null|Set FSuper click listener|
 
 
-### 🧸 子组件参数
+### 🧸 Child Widget Parameters
 
-|参数|类型|必要|默认值|说明|
+|Param|Type|Necessary|Default|desc|
 |---|---|:---:|---|---|
-|child1|Widget|否|null|子组件1|
-|child1Alignment|Alignment|否|null|子组件1在 FSuper 中的相对位置|
-|child1Margin|EdgeInsets|否|null|子组件1基于相对位置的偏移|
-|onChild1Click|GestureTapCallback|否|null|子组件1的点击事件|
-|child2|Widget|否|null|子组件2|
-|child2Alignment|Alignment|否|null|子组件2在 FSuper 中的相对位置|
-|child2Margin|EdgeInsets|否|null|子组件2基于相对位置的偏移|
-|onChi2d1Click|GestureTapCallback|否|null|子组件2的点击事件|
+|child1|Widget|false|null|child widget 1|
+|child1Alignment|Alignment|false|null|Relative position of child widget 1 in FSuper|
+|child1Margin|EdgeInsets|false|null|child widget 1 relative position based offset|
+|onChild1Click|GestureTapCallback|false|null|Click listener of child widget 1|
+|child2|Widget|false|null|child widget 2|
+|child2Alignment|Alignment|false|null|Relative position of child widget 2 in FSuper|
+|child2Margin|EdgeInsets|false|null|child widget 2 relative position based offset|
+|onChi2d1Click|GestureTapCallback|false|null|Click listener of child widget 2|
 
-### 🎈 小红点参数
+### 🎈 Red Point Parameters
 
-|参数|类型|必要|默认值|说明|
+|Param|Type|Necessary|Default|desc|
 |---|---|:---:|---|---|
-|redPoint|bool|否|false|是否展示小红点|
-|redPointColor|Color|否|Colors.redAccent|小红点颜色|
-|redPointSize|double|否|20|小红点大小|
-|redPointText|String|否|null|小红点上的文本|
-|redPointTextColor|Color|否|null|小红点上的文本颜色|
-|redPointTextSize|double|否|null|小红点上的文本字体大小|
-|redPointOffset|Offset|否|null|小红点向右上方的位置偏移量。Offset(0,0)小红点在 FSuper 的右上角。默认会向右上方偏移小红点size的1/4|
+|redPoint|bool|false|false|Whether to show the Red Point|
+|redPointColor|Color|false|Colors.redAccent|The Red Point color|
+|redPointSize|double|false|20|The Red Point size|
+|redPointText|String|false|null|text on Red Point|
+|redPointTextColor|Color|false|null|Text color on Red Point|
+|redPointTextSize|double|false|null|Text font size on Red Point|
+|redPointOffset|Offset|false|null|The Red Point shifts to the upper right. The Red Point of Offset (0,0) is in the upper right corner of FSuper. By default, the Red Point is shifted to the upper right by 1/4|
 
-### 🖼 边框参数
+### 🖼 Stroke Parameters
 
-|参数|类型|必要|默认值|说明|
+|Param|Type|Necessary|Default|desc|
 |---|---|:---:|---|---|
-|strokeWidth|double|否|null|边框宽度。>0 时边框就会显示|
-|strokeColor|Color|否|null|边框颜色|
+|strokeWidth|double|false|null|Border width. > 0 border will be displayed|
+|strokeColor|Color|false|null|边框颜色|
 
 
-### 🔳 阴影参数
+### 🔳 Shadow Parameters
 
-|参数|类型|必要|默认值|说明|
+|Param|Type|Necessary|Default|desc|
 |---|---|:---:|---|---|
-|shadowColor|Color|否|null|阴影颜色|
-|shadowOffset|Offset|否|null|阴影偏移量|
-|shadowBlur|double|否|null|值越大，阴影越大|
+|shadowColor|Color|false|null|Shadow color|
+|shadowOffset|Offset|false|null|Shadow offset|
+|shadowBlur|double|false|null|The larger the value, the larger the shadow|
 
 
 
-## 📺 使用示例
+## 📺 Demo
 
-### 🔩 基本使用
+### 🔩 Basic Demo
 
 ![](https://gw.alicdn.com/tfs/TB1GwWEtRv0gK0jSZKbXXbK2FXa-856-580.png)
 
@@ -156,19 +155,19 @@ FSuper(
 
 ```
 
-**FSuper** 通过 `text` 属性设置文字的第一部分，且有相关的文本样式属性可以设置。如果你希望实现富文本效果，可以通过 `spans` 属性传入一个 **TextSpan** 数组。
+**FSuper** The first part of the text is set through the `text` property, and related text style properties can be set. If you want to achieve rich text effects, you can pass a **TextSpan** array via the spans property.
 
-当然，默认情况下，你没有给 **TextSpan** 设置的属性，将会自动继承 **FSuper** 的文本样式配置。
+Of course, by default, the properties you have not set for **TextSpan** will automatically inherit the text style configuration of **FSuper**.
 
-默认情况下，**FSuper** 能够自适应文本内容大小。
+By default, **FSuper** is able to adapt the text content size.
 
-但你仍然可以通过 `width`、`height` 属性来指定一个具体的大小。如果你想要让组件充满的父容器的，可以将它们的值设置为 `double.infinity`。
+But you can still specify a specific size through the `width`,` height` properties. If you want the parent container to be full of components, you can set their value to `double.infinity`.
 
-> ⚠️ 你始终都不要在一个无限大的父容器中，给 **FSuper** 的尺寸值设置为 `double.infinity`，因为它真的不知道自己该有多大！
+> ⚠️ You should never set the size of **FSuper** to double.infinity in an infinite parent container, because it really does not know how big it should be!
 
-此外，**FSuper** 还提供了 `maxWidth` 和 `maxHeight` 来辅助布局，这在一个不确定组件大小的情况下十分有用。你的组件将始终不能超过它们的限制。
+In addition, **FSuper** also provides `maxWidth` and` maxHeight` to assist in layout, which is useful in the case of an uncertain component size. Your components will never exceed their limits.
 
-## 🖼 圆角和边框
+## 🖼 Corner & Stroke Demo
 
 ![](https://gw.alicdn.com/tfs/TB1PCWDtKL2gK0jSZPhXXahvXXa-854-860.png)
 
@@ -193,19 +192,19 @@ FSuper(
 ),
 ```
 
-使用 **FSuper** 声明一个边角、边框组件是十分简单的。
+Using **FSuper** to declare a corner and border component is very simple.
 
-仅仅通过 `corner` 属性就能声明边角，一个 **Corner** 对象将会描述组件的边角情况，你可以单独控制每一个边角。
+Corners can be declared just by the `corner` property. A **Corner** object will describe the corners of the component. You can control each corner individually.
 
-**FSuper** 支持两种类型的边角：
+**FSuper** supports two types of corners:
 
-- **CornerStyle.round**：圆角。这是大多数时候我们需要的。
+- **CornerStyle.round**：Rounded corners. This is what we need most of the time.
 
-- **CornerStyle.bevel**：斜角。
+- **CornerStyle.bevel**：bevel corners.
 
-如果你想要边框，只需要让 **FSuper** 的 `strokeWidth > 0` 就可以了。此外，`strokeColor` 属性让你能够描述边框的颜色。
+If you want a border, you only need to make `StrokeWidth> 0` of **FSuper**. In addition, the `strokeColor` property allows you to describe the color of the border.
 
-## 🔳 渐变和阴影
+## 🔳 Gradient & Shadow Demo
 
 ![](https://gw.alicdn.com/tfs/TB1kz9EtKT2gK0jSZFvXXXnFXXa-852-580.png)
 
@@ -225,11 +224,11 @@ FSuper(
 ),
 ```
 
-`gradient` 属性允许你使用一个渐变对象来为  **FSuper**  声明一个渐变色背景。
+The `gradient` property allows you to declare a gradient background for **FSuper** using a gradient object.
 
-渐变色背景会覆盖 `backgroundColor` 设置的纯色背景色。
+The gradient background will override the solid background color set by backgroundColor.
 
-> ⚠️ 背景优先级：backgroundImage > gradient > backgroundColor.
+> ⚠️ Background priority：backgroundImage > gradient > backgroundColor.
 
 ```
 FSuper(
@@ -252,9 +251,9 @@ FSuper(
 ),
 ```
 
-如果你在考虑为组件添加阴影效果，那使用 **FSuper** 就是一个绝佳的选择。
+If you are considering adding shadow effects to your components, using **FSuper** is a great choice.
 
-## 🎈 小红点
+## 🎈 Red Point Demo
 
 ![](https://gw.alicdn.com/tfs/TB1TpN6tF67gK0jSZPfXXahhFXa-858-662.png)
 
@@ -269,17 +268,16 @@ FSuper(
   redPointText: "红包",
 ),
 ```
+Using **FSuper** can be very simple to achieve the common Red Point effect. Just configure `redPoint: true`.
 
-使用 **FSuper** 能够十分简单的实现很常见的小红点效果。只需配置 `redPoint: true`。
+In addition, you can add arbitrary text content to the Red Point (it is really convenient) and set its position.
 
-此外，你可以为小红点添加任意的文本内容（真是方便），以及设置它的位置。
+> ⚠️ The (0,0) position of the Red Point is in the upper right corner of **FSuper**.
 
-> ⚠️ 小红点的 (0,0)位置，在 **FSuper** 的右上角。
-
-一条龙服务，满足你的所有需求。
+One-stop service to meet all your needs.
 
 
-## 🧸 子组件
+## 🧸 Child Widget
 
 ![](https://gw.alicdn.com/tfs/TB10XKGtKH2gK0jSZFEXXcqMpXa-856-848.png)
 
@@ -324,21 +322,21 @@ FSuper(
   ),
 ```
 
-在 **FSuper** 中，可以通过 `child1、child2` 来声明两个子组件。你可以指定它们的位置和声明点击事件。
+In **FSuper**, two child components can be declared by `child1, child2`. You can specify their location and declare a click event.
 
-这在一些常见的复杂布局中，将会大大提升开发速度。尤其是在 **一个组件大小小不确定，而另一个组件要基于它的大小确定位置** 的场景中，**FSuper** 处理好了一切。
+This will greatly increase development speed in some common and complex layouts. Especially in the scenario where the size of one component is small and uncertain, and the other component determines the position based on its size, **FSuper** handles everything.
 
-图中这些组件效果，均只需要一个 **FSuper** 组件就能够完成。
+The effects of these components in the picture only need one **FSuper** component to complete.
 
-## 🎞 更多示例
+## 🎞 More Demo
 
 ![](https://gw.alicdn.com/tfs/TB1__eItHj1gK0jSZFOXXc7GpXa-854-1542.png)
 
-不要惊讶，图中效果都使用 **FSuper** 来实现。
+Do not be surprised, the effects in the figure are all achieved with **FSuper**.
 
-子组件的设计使得 **FSuper** 的灵活性有了质的飞跃，绝大部分复杂视图，均可胜任。
+The design of the sub-components makes **FSuper** a qualitative leap in flexibility, and most of the complex views are capable.
 
-比如图中的聊天框气泡，不需要使用背景图，直接使用 **FSuper** 即可实现。这使得这样的组件获得了极大的灵活性，易于修改。
+For example, the chat bubble in the picture does not need to use the background picture, just use **FSuper** to achieve it. This makes such components extremely flexible and easy to modify.
 
 ```
 FSuper(

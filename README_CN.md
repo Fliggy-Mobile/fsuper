@@ -63,7 +63,6 @@
 |height|double|否|null|高度。不能设置为 double.infinity|
 |maxWidth|double|否|null|最大宽度。如果 width > maxWidth，会覆盖 width。如果没有 width，最大扩展宽度为 maxWidth|
 |maxHeight|double|否|null|最大高度。如果 height > maxHeight，会覆盖 height。如果没有 height，最大扩展宽度为 maxHeight|
-|maxHeight|double|否|null|最大高度。如果 height > maxHeight，会覆盖 height。如果没有 height，最大扩展宽度为 maxHeight|
 |backgroundColor|Color|否|null|背景颜色|
 |backgroundImage|ImageProvider|否|null|背景图。会覆盖 backgroundColor 和 gradient|
 |gradient|Gradient|否|null|渐变色。会覆盖 backgroundColor|
