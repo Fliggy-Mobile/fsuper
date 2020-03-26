@@ -31,6 +31,7 @@ enum CornerStyle {
 ///
 /// FSuper is a powerful component that can support rich text, rounded corners, borders, pictures, small red dots, and set up to two sub-components at the same time, and control their relative positions.
 /// FSuper can help developers build complex views quickly and comfortably.
+// ignore: must_be_immutable
 class FSuper extends StatefulWidget {
   /// 宽。null 将会自适应文字大小。设置 double.infinity 将会充满父容器。
   ///
@@ -363,11 +364,11 @@ class _FSuperState extends State<FSuper> {
     BorderRadius borderRadius = widget.corner == null
         ? BorderRadius.all(Radius.circular(0))
         : BorderRadius.only(
-      topLeft: Radius.circular(widget.corner.leftTopCorner),
-      topRight: Radius.circular(widget.corner.rightTopCorner),
-      bottomRight: Radius.circular(widget.corner.rightBottomCorner),
-      bottomLeft: Radius.circular(widget.corner.leftBottomCorner),
-    );
+            topLeft: Radius.circular(widget.corner.leftTopCorner),
+            topRight: Radius.circular(widget.corner.rightTopCorner),
+            bottomRight: Radius.circular(widget.corner.rightBottomCorner),
+            bottomLeft: Radius.circular(widget.corner.leftBottomCorner),
+          );
     var sideColor = widget.strokeColor ?? Colors.transparent;
     var borderSide = BorderSide(
       width: widget.strokeWidth ?? 0,
@@ -376,18 +377,18 @@ class _FSuperState extends State<FSuper> {
     );
     var shape = widget.cornerStyle == CornerStyle.round
         ? RoundedRectangleBorder(
-      borderRadius: borderRadius,
-      side: borderSide,
-    )
+            borderRadius: borderRadius,
+            side: borderSide,
+          )
         : BeveledRectangleBorder(
-      borderRadius: borderRadius,
-      side: borderSide,
-    );
+            borderRadius: borderRadius,
+            side: borderSide,
+          );
     var decorationImage = widget.backgroundImage != null
         ? DecorationImage(
-      fit: BoxFit.cover,
-      image: widget.backgroundImage,
-    )
+            fit: BoxFit.cover,
+            image: widget.backgroundImage,
+          )
         : null;
     var decoration = ShapeDecoration(
         color: widget.backgroundColor,
@@ -395,13 +396,13 @@ class _FSuperState extends State<FSuper> {
         image: decorationImage,
         shadows: widget.shadowColor != null && widget.shadowBlur != 0
             ? [
-          BoxShadow(
-            color: widget.shadowColor ??
-                widget.backgroundColor.withOpacity(opacity),
-            offset: widget.shadowOffset ?? Offset(0, 0),
-            blurRadius: widget.shadowBlur,
-          )
-        ]
+                BoxShadow(
+                  color: widget.shadowColor ??
+                      widget.backgroundColor.withOpacity(opacity),
+                  offset: widget.shadowOffset ?? Offset(0, 0),
+                  blurRadius: widget.shadowBlur,
+                )
+              ]
             : null,
         shape: shape);
     var textPart = Text.rich(
@@ -466,9 +467,9 @@ class _FSuperState extends State<FSuper> {
       child: widget.margin == null
           ? gestureDetectorPart
           : Padding(
-        padding: widget.margin,
-        child: gestureDetectorPart,
-      ),
+              padding: widget.margin,
+              child: gestureDetectorPart,
+            ),
     );
     return result;
   }
@@ -536,16 +537,16 @@ class _FSuperState extends State<FSuper> {
         decoration: BoxDecoration(
           color: Colors.redAccent,
           borderRadius:
-          BorderRadius.all(Radius.circular(widget.redPointSize / 2)),
+              BorderRadius.all(Radius.circular(widget.redPointSize / 2)),
         ),
         child: redPointTextEmpty
             ? null
             : Text(
-          widget.redPointText ?? "",
-          style: TextStyle(
-              color: widget.redPointTextColor,
-              fontSize: redPointTextSize),
-        ),
+                widget.redPointText ?? "",
+                style: TextStyle(
+                    color: widget.redPointTextColor,
+                    fontSize: redPointTextSize),
+              ),
       ),
     );
     return redPointPart;
