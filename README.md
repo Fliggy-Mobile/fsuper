@@ -14,6 +14,8 @@
 
 <p><strong>FSuper</strong> 是一个强大的组件，能够支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。</p>
 
+<p>
+<p>
 
 <a href="javascript:void(0)">
  <img height="20" src="https://badgen.net/badge/version/0.1.4/green">
@@ -23,6 +25,7 @@
  <img height="20" src="https://img.shields.io/badge/License-Apache--2.0-blue.svg">
 </a>
 
+<p>
 <p>
 
 <p><strong>fwidgets/fsuper</strong></p>
