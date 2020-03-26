@@ -34,6 +34,10 @@
     <img height="20" src="https://img.shields.io/badge/Language-Dart-blue.svg">
 </a>
 
+<a href="https://pub.dev/documentation/fsuper/latest/fsuper/fsuper-library.html">
+    <img height="20" src="https://img.shields.io/badge/Api-done-yellowgreen.svg">
+</a>
+
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">
    <img height="20" src="https://img.shields.io/badge/License-Apache--2.0-blueviolet.svg">
 </a>
@@ -47,6 +51,8 @@
 </div>
 
 **English | [简体中文](https://github.com/Fliggy-Android-Team/fsuper/blob/master/README_CN.md)**
+
+> Like it? Please cast your **Star** 🥰!
 
 # ✨ Features
 
@@ -377,6 +383,32 @@ FSuper(
 ),
 ```
 
+# 😃 How to use？
+
+Add dependency in project `pubspec.yaml` file:
+
+## 🌐 pub dependency
+
+```
+dependencies:
+  fsuper: ^<version number>
+```
+
+> ⚠️ Attention, please go to [**pub**] (https://pub.dev/packages/fsuper) to get the latest version number of **FSuper**
+
+## 🖥 git dependencies
+
+```
+dependencies:
+  fsuper:
+    git:
+      url: 'git@github.com:Fliggy-Android-Team/fsuper.git'
+      ref: '<Branch number or tag number>'
+```
+
+> ⚠️ Attention，Please refer to the official project of [**FSuper**] (https://github.com/Fliggy-Android-Team/fsuper) for the branch number or tag.
+
+
 # 💡 License
 
 ```
@@ -395,3 +427,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ```
+
+### Like it? Please cast your **Star** 🥰!

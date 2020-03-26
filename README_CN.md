@@ -35,6 +35,10 @@
     <img height="20" src="https://img.shields.io/badge/Language-Dart-blue.svg">
 </a>
 
+<a href="https://pub.dev/documentation/fsuper/latest/fsuper/fsuper-library.html">
+    <img height="20" src="https://img.shields.io/badge/Api-done-yellowgreen.svg">
+</a>
+
 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">
    <img height="20" src="https://img.shields.io/badge/License-Apache--2.0-blueviolet.svg">
 </a>
@@ -46,7 +50,10 @@
 
 </div>
 
+
 **[English](https://github.com/Fliggy-Android-Team/fsuper) | 简体中文**
+
+> 感觉还不错？请投出您的 **Star** 吧 🥰 ！
 
 # ✨ 特性
 
@@ -378,6 +385,31 @@ FSuper(
 ),
 ```
 
+# 😃 如何使用？
+
+在项目 `pubspec.yaml` 文件中添加依赖：
+
+## 🌐 pub 依赖方式
+
+```
+dependencies:
+  fsuper: ^<版本号>
+```
+
+> ⚠️ 注意，请到 [**pub**](https://pub.dev/packages/fsuper) 获取 **FSuper** 最新版本号
+
+## 🖥 git 依赖方式
+
+```
+dependencies:
+  fsuper:
+    git:
+      url: 'git@github.com:Fliggy-Android-Team/fsuper.git'
+      ref: '<分支号 或 tag>'
+```
+
+> ⚠️ 注意，分支号 或 tag 请以 [**FSuper**](https://github.com/Fliggy-Android-Team/fsuper) 官方项目为准。
+
 # 💡 License
 
 ```
@@ -396,3 +428,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ```
+
+### 感觉还不错？请投出您的 **Star** 吧 🥰 ！
