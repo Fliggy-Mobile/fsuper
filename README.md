@@ -16,7 +16,7 @@
 <p><strong>Author：<a href="https://github.com/chenBingX">Newton</a>(<a href="coorchice.cb@alibaba-inc.com">coorchice.cb@alibaba-inc.com</a>)</strong></p>
 <p>
 
-<a href="https://github.com/Fliggy-Android-Team/fsuper">
+<a href="https://pub.dev/packages/fsuper#-readme-tab-">
     <img height="20" src="https://img.shields.io/badge/Version-0.1.5-important.svg">
 </a>
 
