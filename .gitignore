@@ -6,7 +6,7 @@
 
 build/
 
-.idea
+.idea/
 
 .metadata
 
@@ -15,3 +15,5 @@ fsuper.iml
 pubspec.lock
 
 
+android/
+ios/
