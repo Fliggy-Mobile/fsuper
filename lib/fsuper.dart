@@ -535,7 +535,7 @@ class _FSuperState extends State<FSuper> {
         ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.redAccent,
+          color: widget.redPointColor,
           borderRadius:
               BorderRadius.all(Radius.circular(widget.redPointSize / 2)),
         ),

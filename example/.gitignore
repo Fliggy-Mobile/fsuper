@@ -41,6 +41,7 @@ ios/
 test/
 web/
 README.md
+macos/
 
 pubspec.lock
 
