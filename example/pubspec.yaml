@@ -9,13 +9,21 @@ dependencies:
   flutter:
     sdk: flutter
 
+  fcommon:
+    git:
+      url: 'git@github.com:Fliggy-Mobile/fcommon.git'
+      ref: 'master'
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  ffloat: ^1.0.0
-  fradio: ^1.0.1
-  fswitch: ^1.1.2
   fbutton: ^1.0.4
+  fswitch: ^1.1.2
+  fradio: ^1.0.1
+  ffloat: ^1.0.1
+  frefresh: ^1.1.0
+  fdottedline: ^1.0.0
+  fsearch: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -39,7 +47,8 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
-
+  assets:
+    - assets/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

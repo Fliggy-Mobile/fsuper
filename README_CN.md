@@ -11,14 +11,14 @@
 
 <p><strong>FSuper</strong> 能够帮助开发者快速舒适的构建复杂视图。</p>
 
-<p>支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。</p>
+<p>支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置，高质感的 Neumorphism 风格。</p>
 
 <p><strong>主理人：<a href="https://github.com/chenBingX">纽特</a>(<a href="coorchice.cb@alibaba-inc.com">coorchice.cb@alibaba-inc.com</a>)</strong></p>
 
 <p>
 
 <a href="https://pub.dev/packages/fsuper#-readme-tab-">
-    <img height="20" src="https://img.shields.io/badge/Version-0.1.5-important.svg">
+    <img height="20" src="https://img.shields.io/badge/Version-2.0.0-important.svg">
 </a>
 
 
@@ -46,7 +46,7 @@
 <p>
 <p>
 
-<img height="500" src="https://raw.githubusercontent.com/chenBingX/img/master/Flutter/fsuper/fsuper_all.jpg">
+<img height="500" src="https://gw.alicdn.com/tfs/TB1MRGyNqL7gK0jSZFBXXXZZpXa-720-758.png">
 
 </div>
 
@@ -71,6 +71,7 @@
 
 - 灵活且强大的 **相对位置布局**
 
+- 高质感的  **Neumorphism**  风格
 
 # 🛠 使用指南
 
@@ -89,14 +90,10 @@
 |gradient|Gradient|否|null|渐变色。会覆盖 backgroundColor|
 |padding|EdgeInsetsGeometry|否|null|文本和各边的边距。这十分有用，通过它来给 FSuper 中的 child 预留展示空间|
 |margin|EdgeInsets|否|null|FSuper 在父容器中的边距|
-|corner|Corner|否|null|边角大小|
-|cornerStyle|CornerStyle|否|CornerStyle.round|边角样式。默认为圆角，设置 CornerStyle.bevel 为斜角|
+|corner|FCorner|否|null|边角大小|
+|cornerStyle|FFCornerStyle|否|FFCornerStyle.round|边角样式。默认为圆角，设置 FCornerStyle.bevel 为斜角|
 |text|String|否|null|文本|
-|textColor|Color|否|null|字体颜色|
-|textSize|double|否|null|字体大小|
-|textStyle|FontStyle|否|null|字体样式|
-|textWeight|FontWeight|否|null|字体粗细|
-|fontHeight|double|否|null|一行文字的高度 = textSize * fontHeight|
+|style|TextStyle|false|null|文本样式|
 |textAlign|TextAlign|否|TextAlign.center|文本的对齐方式|
 |spans|List<TextSpan>|否|null|富文本。可以接到 text 文本之后，默认会继承 text 的配置。可以通过 TextStyle 单独设置|
 |onClick|GestureTapCallback|否|null|设置 FSuper 的点击事件|
@@ -123,8 +120,7 @@
 |redPointColor|Color|否|Colors.redAccent|小红点颜色|
 |redPointSize|double|否|20|小红点大小|
 |redPointText|String|否|null|小红点上的文本|
-|redPointTextColor|Color|否|null|小红点上的文本颜色|
-|redPointTextSize|double|否|null|小红点上的文本字体大小|
+|redPointTextStyle|TextStyle|false|null|小红点文本样式|
 |redPointOffset|Offset|否|null|小红点向右上方的位置偏移量。Offset(0,0)小红点在 FSuper 的右上角。默认会向右上方偏移小红点size的1/4|
 
 ### 🖼 边框参数
@@ -143,7 +139,14 @@
 |shadowOffset|Offset|否|null|阴影偏移量|
 |shadowBlur|double|否|null|值越大，阴影越大|
 
+### 🍭 Neumorphism 风格
 
+|参数|类型|必要|默认值|说明|
+|---|---|:---:|---|---|
+|isSupportNeumorphism|bool|false|false|是否支持 Neumorphism 风格。开启该项 [highlightColor] 将会失效|
+|lightOrientation|FLightOrientation|false|FLightOrientation.LeftTop|当 [isSupportNeumorphism] 为 true 时有效。光源方向，分为左上、左下、右上、右下四个方向。用来控制光源照射方向，会影响高亮方向和阴影方向|
+|highlightShadowColor|Color|false|null|开启 Neumorphism 风格后的，亮部阴影颜色|
+|float|bool|false|false|开启 Neumorphism 风格后，是否呈浮起效果，否则为凹陷效果，默认为 true|
 
 ## 📺 使用示例
 
@@ -199,15 +202,14 @@ FSuper(
   padding: EdgeInsets.only(top: 16, bottom: 16)
   text: 'Corner FSuper',
   backgroundColor: Color(0xffFF7043),
-  corner: Corner.all(12),
-  cornerStyle: CornerStyle.bevel,
+  corner: FCorner.all(12),
+  cornerStyle: FCornerStyle.bevel,
 ),
 
 FSuper(
   text: '音乐类型:流行音乐',
-  textColor: Color(0xffc2bfc2),
   padding: EdgeInsets.all(2),
-  corner: Corner.all(3),
+  corner: FCorner.all(3),
   strokeColor: Color(0xffc2bfc2),
   strokeWidth: 1,
 ),
@@ -219,9 +221,9 @@ FSuper(
 
 **FSuper** 支持两种类型的边角：
 
-- **CornerStyle.round**：圆角。这是大多数时候我们需要的。
+- **FCornerStyle.round**：圆角。这是大多数时候我们需要的。
 
-- **CornerStyle.bevel**：斜角。
+- **FCornerStyle.bevel**：斜角。
 
 如果你想要边框，只需要让 **FSuper** 的 `strokeWidth > 0` 就可以了。此外，`strokeColor` 属性让你能够描述边框的颜色。
 
@@ -235,9 +237,7 @@ FSuper(
   height: 45,
   text: 'Search Flight',
   textAlignment: Alignment.center,
-  textSize: 16,
-  textColor: Color(0xff333333),
-  corner: Corner.all(23),
+  corner: FCorner.all(23),
   gradient: LinearGradient(colors: [
     Color(0xfffed83a),
     Color(0xfffcad2c),
@@ -283,9 +283,9 @@ FSuper(
   width: 60,
   height: 60,
   backgroundColor: Color(0xffeeeeee),
-  corner: Corner.all(6),
+  corner: FCorner.all(6),
   redPoint: true,
-  redPointSize: 20,
+  readPointTextStyle: TextStyle(fontSize: 20.0),
   redPointText: "红包",
 ),
 ```
@@ -310,12 +310,11 @@ FSuper(
     padding: EdgeInsets.fromLTRB(
         (16.0 + 25.0 + 12), 8, (0.0 + 8.0), 8),
     margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-    corner: Corner.all(6),
+    corner: FCorner.all(6),
     backgroundColor: Color(0xfffff0e7),
     strokeColor: Color(0xfffee0cd),
     strokeWidth: 1,
     text: '警告提示的文案',
-    textColor: Color(0xff7e7c7a),
     textAlignment: Alignment.centerLeft,
     textAlign: TextAlign.left,
     spans: [
@@ -350,6 +349,65 @@ FSuper(
 
 图中这些组件效果，均只需要一个 **FSuper** 组件就能够完成。
 
+## 🍭 Neumorphism 风格
+
+![](https://gw.alicdn.com/tfs/TB1F3evNpT7gK0jSZFpXXaTkpXa-720-1037.gif)
+
+```dart
+FSuper(
+
+  /// 开启 Neumorphism 支持
+  ///
+  /// Turn on Neumorphism support
+  isSupportNeumorphism: true,
+
+  /// 配置光源方向
+  ///
+  /// Configure light source direction
+  lightOrientation: lightOrientation,
+
+  /// 配置暗部阴影
+  ///
+  /// Configure dark shadows
+  shadowColor: Colors.black87,
+
+  /// 配置亮部阴影
+  ///
+  /// Configure highlight shadow
+  highlightShadowColor: Colors.white24,
+
+  /// 是否呈浮起视效
+  ///
+  /// Whether it is floating visual effect
+  float: false,
+  shadowOffset: Offset(0.0, 1.0),
+  width: 50,
+  height: 50,
+  backgroundColor: Color(0xff28292f),
+  corner: FCorner.all(40),
+  child1: Icon(
+    Icons.star,
+    color: Color(0xfffff176),
+    size: 23,
+  ),
+),
+```
+
+**FSuper** 为开发者带来了不可思议的，超高质感的  **Neumorphism**  风格。
+
+开发者只需要简单的通过配置 `isSupportNeumorphism` 参数，就可以开启和关闭 **Neumorphism**  风格。
+
+如果想要调整 **Neumorphism** 的样式，可以通过 Shadow 相关的几个属性进行细微的调整，其中：
+
+- shadowColor: 配置暗部阴影
+
+- highlightShadowColor：配置亮部阴影
+
+**FSuper** 还提供了 `lightOrientation` 参数，甚至使得开发者能够调整关照角度，已获得不同的 **Neumorphism** 效果。
+
+通过 `float` 参数，开发者轻松的在 **浮起视效** 和 **凹陷视效** 间任意切换。
+
+
 ## 🎞 更多示例
 
 ![](https://gw.alicdn.com/tfs/TB1__eItHj1gK0jSZFOXXc7GpXa-854-1542.png)
@@ -368,14 +426,14 @@ FSuper(
   padding: EdgeInsets.only(
       left: 12, right: 12, top: 15, bottom: 15),
   backgroundColor: Color(0xffa5ed7e),
-  corner: Corner.all(6),
+  corner: FCorner.all(6),
   child1: Transform.rotate(
     angle: pi / 4,
     child: FSuper(
       width: 10,
       height: 10,
       backgroundColor: Color(0xffa5ed7e),
-      corner: Corner.all(1.5),
+      corner: FCorner.all(1.5),
     ),
   ),
   child1Alignment: Alignment.topRight,
@@ -384,6 +442,7 @@ FSuper(
   shadowBlur: 5,
 ),
 ```
+
 
 # 😃 如何使用？
 
@@ -430,3 +489,18 @@ limitations under the License.
 ```
 
 ### 感觉还不错？请投出您的 [**Star**](https://github.com/Fliggy-Mobile/fsuper) 吧 🥰 ！
+
+
+---
+
+# 如何运行 Demo 工程？
+
+1.**clone** 工程到本地
+
+2.进入工程 `example` 目录，运行以下命令
+
+```
+flutter create .
+```
+
+3.运行 `example` 中的 Demo
