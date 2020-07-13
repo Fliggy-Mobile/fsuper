@@ -13,10 +13,8 @@ dependencies:
 
   fcontrol:
     git:
-      url: "git@gitlab.alibaba-inc.com:fapi/fcontrol.git"
+      url: "git@github.com:Fliggy-Mobile/fcontrol.git"
       ref: "stable"
-#  fcontrol:
-#    path: ../fcontrol
 
 dev_dependencies:
   flutter_test:
