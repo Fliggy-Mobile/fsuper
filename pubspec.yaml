@@ -11,10 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  fcontrol:
-    git:
-      url: "git@github.com:Fliggy-Mobile/fcontrol.git"
-      ref: "stable"
+  fcontrol: ^1.0.0
 
 dev_dependencies:
   flutter_test:
