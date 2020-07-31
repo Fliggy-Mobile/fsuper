@@ -1,3 +1,7 @@
+## 2.0.1
+
+- optimization
+
 ## 2.0.0
 
 - Remove the following parameters and use the `style` parameter instead:
