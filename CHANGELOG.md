@@ -1,3 +1,7 @@
+## 2.0.2
+
+- fix `maxWidth` not work
+
 ## 2.0.1
 
 - optimization

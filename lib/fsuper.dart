@@ -438,7 +438,9 @@ class _FSuperState extends State<FSuper> {
       containerPart = LimitedBox(
         maxWidth: widget.maxWidth ?? double.infinity,
         maxHeight: widget.maxHeight ?? double.infinity,
-        child: containerPart,
+        child: Container(
+            width: widget.maxWidth ?? double.infinity,
+            child: containerPart),
       );
     }
     children.add(Container(
