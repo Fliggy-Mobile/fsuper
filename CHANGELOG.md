@@ -1,3 +1,6 @@
+## 3.0.0
+* 添加flutter 3.0支持
+
 ## 2.0.2
 
 - fix `maxWidth` not work
