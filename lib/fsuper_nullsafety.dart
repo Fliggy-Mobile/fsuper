@@ -11,13 +11,14 @@
 /// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
-export 'package:fcontrol/fdefine.dart';
-import 'package:fcontrol/fcontrol.dart';
-import 'package:fcontrol/fdefine.dart';
+import 'dart:math' as math;
+
+import 'package:fcontrol_nullsafety/fcontrol.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
-import 'dart:math' as math;
+
 
 /// FSuper 是一个强大的组件，能够支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且能够通过相对位置控制它们。
 /// FSuper 能够帮助开发者快速舒适的构建复杂视图。
@@ -29,77 +30,77 @@ class FSuper extends StatefulWidget {
   /// 宽。null 将会自适应文字大小。设置 double.infinity 将会充满父容器。
   ///
   /// Width，null will adapt the text size. Setting double.infinity will fill the parent container.
-  final double width;
+  final double? width;
 
   /// 宽。null 将会自适应文字大小。
   ///
   /// Height， null will adapt the text size.
-  final double height;
+  final double? height;
 
   /// 组件最大宽度。
   ///
   /// Maximum component width.
-  final double maxWidth;
+  final double? maxWidth;
 
   /// 组件最大高度
   ///
   /// Maximum component height
-  final double maxHeight;
+  final double? maxHeight;
 
   /// 文字内容
   ///
   /// Text content
-  final String text;
+  final String? text;
 
   /// Widget 文本样式
   ///
   /// Widget text style
-  final TextStyle style;
+  final TextStyle? style;
 
   /// 文字整体相对位置。详见 [Alignment]
   ///
   /// The overall relative position of the text. See [Alignment] for details
-  final Alignment textAlignment;
+  final Alignment? textAlignment;
 
   /// 文字对齐方式。详见 [Align]
   ///
   /// Text alignment. See [Align] for details
-  final TextAlign textAlign;
+  final TextAlign? textAlign;
 
   /// 富文本内容。详见 [TextSpan] 。
   /// [TextSpan] 元素默认会使用 [textColor]，[textSize]，[textStyle]，[textWeight] 的配置。
   ///
   /// Rich text content. See [TextSpan] for more details.
   /// The [TextSpan] element uses the configuration of [textColor], [textSize], [textStyle], [textWeight] by default.
-  final List<TextSpan> spans;
+  final List<TextSpan>? spans;
 
   /// 点击监听回调
   ///
   /// Click listen callback
-  final GestureTapCallback onClick;
+  final GestureTapCallback? onClick;
 
   /// 组件背景颜色。
   ///
   /// Component background color
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// 设置组件渐变色背景。会覆盖 [backgroundColor]
   /// 你可选择 [LinearGradient]，[RadialGradient]，[SweepGradient] 等..
   ///
   /// Sets the gradient background of the component. [BackgroundColor]
   /// You can choose [LinearGradient], [RadialGradient], [SweepGradient], etc ..
-  final Gradient gradient;
+  final Gradient? gradient;
 
   /// 组件背景图片，会覆盖 [backgroundColor]  和 [gradient]。详见 [ImageProvider]
   ///
   /// Component background image, overwrites [backgroundColor] and [gradient].
   /// See [ImageProvider] for details
-  final ImageProvider backgroundImage;
+  final ImageProvider? backgroundImage;
 
   /// 设置组件圆角。详见 [FCorner]
   ///
   /// Sets the component fillet. See [FCorner] for details
-  final FCorner corner;
+  final FCorner? corner;
 
   /// 设置圆角风格，默认 [FCornerStyle.round]
   ///
@@ -110,56 +111,56 @@ class FSuper extends StatefulWidget {
   ///
   /// Sets the spacing between components, affecting only text.
   /// This property can set the space between the text and [FSuper.child1], [FSuper.child2].
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// 设置组件与父容器边缘的间距。详见 [EdgeInsets]
   ///
   /// Sets the distance between the component and the edge of the parent container. See [EdgeInsets] for details
-  final EdgeInsets margin;
+  final EdgeInsets? margin;
 
   /// 子组件。子组件允许是任意类型的 Widget。
   /// 通过 [child1Alignment] 和 [child1Margin] 可以控制它在组件中的位置。
   ///
   /// Subassembly. Child components are allowed to be any type of widget.
   /// [Child1Alignment] and [child1Margin] can control its position in the component.
-  final Widget child1;
+  final Widget? child1;
 
   /// 指定 [child1] 在组件中的相对位置
   ///
   /// Specify the relative position of the child component in the component
-  final Alignment child1Alignment;
+  final Alignment? child1Alignment;
 
   /// 基于 [child1] 的相对位置，为它设置偏移
   ///
   /// Set an offset for the child component based on its relative position
-  final EdgeInsets child1Margin;
+  final EdgeInsets? child1Margin;
 
   /// 为 [child1] 设置点击监听器
   ///
   /// Set click listener for [child1]
-  final GestureTapCallback onChild1Click;
+  final GestureTapCallback? onChild1Click;
 
   /// 子组件。子组件允许是任意类型的 Widget。
   /// 通过 [child1Alignment] 和 [child1Margin] 可以控制它在组件中的位置。
   ///
   /// Subassembly. Child components are allowed to be any type of widget.
   /// [Child1Alignment] and [child1Margin] can control its position in the component.
-  final Widget child2;
+  final Widget? child2;
 
   /// 指定 [child2] 在组件中的相对位置
   ///
   /// Specify the relative position of the child component in the component
-  final Alignment child2Alignment;
+  final Alignment? child2Alignment;
 
   /// 基于 [child2] 的相对位置，为它设置偏移
   ///
   /// Set an offset for the child component based on its relative position
-  final EdgeInsets child2Margin;
+  final EdgeInsets? child2Margin;
 
   /// 为 [child2] 设置点击监听器
   ///
   /// Set click listener for [child2]
-  final GestureTapCallback onChild2Click;
+  final GestureTapCallback? onChild2Click;
 
   /// 是否显示小红点。默认不展示。
   ///
@@ -179,7 +180,7 @@ class FSuper extends StatefulWidget {
   /// 设置 Red Point 中的文字。比如消息数量..
   ///
   /// Set the text in Red Point. Like number of messages ...
-  final String redPointText;
+  final String? redPointText;
 
   /// 小红点文本样式
   ///
@@ -191,27 +192,27 @@ class FSuper extends StatefulWidget {
   ///
   /// Sets the position of the Red Point based on the upper right corner of the component.
   /// The default Red Point is shifted to the upper right [redPointSize] / 2
-  final Offset redPointOffset;
+  final Offset? redPointOffset;
 
   /// 设置边框颜色。
   ///
   /// Set the border color.
-  final Color strokeColor;
+  final Color? strokeColor;
 
   /// 设置边框宽
   ///
   /// Set border width
-  final double strokeWidth;
+  final double? strokeWidth;
 
   /// 设置组件阴影颜色
   ///
   /// Set component shadow color
-  final Color shadowColor;
+  final Color? shadowColor;
 
   /// 设置组件阴影偏移
   ///
   /// Set component shadow offset
-  final Offset shadowOffset;
+  final Offset? shadowOffset;
 
   /// 设置组件高斯与阴影形状卷积的标准偏差。
   ///
@@ -226,19 +227,19 @@ class FSuper extends StatefulWidget {
   /// 当 [isSupportNeumorphism] 为 true 时有效。光源方向，分为左上、左下、右上、右下四个方向。用来控制光源照射方向，会影响高亮方向和阴影方向
   ///
   /// Valid when [isSupportNeumorphism] is true. The direction of the light source is divided into four directions: upper left, lower left, upper right, and lower right. Used to control the illumination direction of the light source, which will affect the highlight direction and shadow direction
-  final FLightOrientation lightOrientation;
+  final FLightOrientation? lightOrientation;
 
   /// 开启 Neumorphism 风格后，亮部阴影颜色
   ///
   /// After the Neumorphism style is turned on, the bright shadow color
-  final Color highlightShadowColor;
+  final Color? highlightShadowColor;
 
   /// 开启 Neumorphism 风格后，是否呈浮起效果，否则为凹陷效果，默认为 true
   ///
   /// Whether the Neumorphism style is turned on, whether it is a floating effect, otherwise it is a concave effect, the default is true
   final bool float;
 
-  FSuper({
+  const FSuper({
     this.width,
     this.height,
     this.maxWidth,
@@ -279,7 +280,8 @@ class FSuper extends StatefulWidget {
     this.highlightShadowColor,
     this.lightOrientation,
     this.float = true,
-  });
+    Key? key
+  }): super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -289,7 +291,7 @@ class FSuper extends StatefulWidget {
   /// 在富文本 [spans] 中插入垂直方向的文字间距
   ///
   /// Insert vertical spacing in rich text [spans]
-  static TextSpan VerticalSpace(double space) {
+  static TextSpan verticalSpace(double space) {
     return TextSpan(
         text: '\n \n',
         style: TextStyle(
@@ -301,7 +303,7 @@ class FSuper extends StatefulWidget {
   /// 在富文本 [spans] 中插入水平方向的文字间距
   ///
   /// Insert horizontal spacing in rich text [spans]
-  static TextSpan HorizontalSpace(double space) {
+  static TextSpan horizontalSpace(double space) {
     return TextSpan(
         text: " ",
         style: TextStyle(
@@ -313,7 +315,7 @@ class FSuper extends StatefulWidget {
 
 class _FSuperState extends State<FSuper> {
   GlobalKey rootKey = GlobalKey();
-  Size containerSize;
+  Size? containerSize;
 
   /// [FSuper] 在初始化时会注册一帧回调，当组件首次测量完成后，将会根据现有尺寸根据再次确定尺寸配置。
   /// 接着会确定 [FSuper.child1]，[FSuper.child2] 的位置。
@@ -331,7 +333,7 @@ class _FSuperState extends State<FSuper> {
 
   void _handleSizeChanged(duration) {
     if (!mounted) return;
-    RenderBox rootBox = rootKey.currentContext.findRenderObject() as RenderBox;
+    RenderBox? rootBox = rootKey.currentContext!.findRenderObject() as RenderBox?;
     if (rootBox != null && containerSize != rootBox.size) {
       setState(() {
         containerSize = rootBox.size;
@@ -343,12 +345,12 @@ class _FSuperState extends State<FSuper> {
   @override
   Widget build(BuildContext context) {
     BorderRadius borderRadius = widget.corner == null
-        ? BorderRadius.all(Radius.circular(0))
+        ? const BorderRadius.all(Radius.circular(0))
         : BorderRadius.only(
-            topLeft: Radius.circular(widget.corner.leftTopCorner),
-            topRight: Radius.circular(widget.corner.rightTopCorner),
-            bottomRight: Radius.circular(widget.corner.rightBottomCorner),
-            bottomLeft: Radius.circular(widget.corner.leftBottomCorner),
+            topLeft: Radius.circular(widget.corner!.leftTopCorner),
+            topRight: Radius.circular(widget.corner!.rightTopCorner),
+            bottomRight: Radius.circular(widget.corner!.rightBottomCorner),
+            bottomLeft: Radius.circular(widget.corner!.leftBottomCorner),
           );
     var sideColor = widget.strokeColor ?? Colors.transparent;
     var borderSide = BorderSide(
@@ -372,7 +374,7 @@ class _FSuperState extends State<FSuper> {
     var decorationImage = widget.backgroundImage != null
         ? DecorationImage(
             fit: BoxFit.cover,
-            image: widget.backgroundImage,
+            image: widget.backgroundImage!,
           )
         : null;
     var decoration = decorationImage != null
@@ -388,7 +390,7 @@ class _FSuperState extends State<FSuper> {
     /// Build base container
     Widget containerPart = FControl(
       key: rootKey,
-      lightOrientation: widget.lightOrientation,
+      lightOrientation: widget.lightOrientation!,
       width: widget.width,
       height: widget.height,
       shape: fShape,
@@ -402,7 +404,7 @@ class _FSuperState extends State<FSuper> {
             : Colors.transparent,
         highlightBlur: widget.isSupportNeumorphism ? _shadowBlur : 0.0,
         highlightDistance: shadowDistance,
-        shadowColor: widget.shadowColor ?? Color(0xffd1d9e6),
+        shadowColor: widget.shadowColor ?? const Color(0xffd1d9e6),
         shadowBlur: _shadowBlur,
         shadowDistance: shadowDistance,
         shadowOffset: widget.shadowOffset,
@@ -413,7 +415,7 @@ class _FSuperState extends State<FSuper> {
             widget.highlightShadowColor ?? Colors.white.withOpacity(0.83),
         highlightBlur: _shadowBlur,
         highlightDistance: shadowDistance,
-        shadowColor: widget.shadowColor ?? Color(0xffd1d9e6),
+        shadowColor: widget.shadowColor ?? const Color(0xffd1d9e6),
         shadowBlur: _shadowBlur,
         shadowDistance: shadowDistance,
       ),
@@ -438,7 +440,7 @@ class _FSuperState extends State<FSuper> {
       containerPart = LimitedBox(
         maxWidth: widget.maxWidth ?? double.infinity,
         maxHeight: widget.maxHeight ?? double.infinity,
-        child: Container(
+        child: SizedBox(
             width: widget.maxWidth ?? double.infinity,
             child: containerPart),
       );
@@ -466,14 +468,14 @@ class _FSuperState extends State<FSuper> {
 
     /// build up
     var stackPart = _Stack(
-      overflow: Overflow.visible,
+      overflow: Clip.antiAliasWithSaveLayer,
       children: children,
     );
     return stackPart;
   }
 
   double get _shadowBlur {
-    if ((widget.shadowBlur == null || widget.shadowBlur == 0.0) &&
+    if ((widget.shadowBlur == 0.0) &&
         widget.isSupportNeumorphism) {
       return 6.0;
     } else {
@@ -500,7 +502,7 @@ class _FSuperState extends State<FSuper> {
       children.add(_MeasureSize(
           onChange: (size) {
             setState(() {
-              child1Size = size;
+              child1Size = size!;
             });
           },
           child: Positioned(
@@ -521,7 +523,7 @@ class _FSuperState extends State<FSuper> {
       children.add(_MeasureSize(
           onChange: (size) {
             setState(() {
-              child2Size = size;
+              child2Size = size!;
             });
           },
           child: Positioned(
@@ -540,30 +542,30 @@ class _FSuperState extends State<FSuper> {
   }
 
   Offset computeChildOffset(
-      Alignment alignment, Size childSize, EdgeInsets childMargin) {
+      Alignment? alignment, Size childSize, EdgeInsets? childMargin) {
     Offset childOffset = Offset.zero;
-    Size size = containerSize;
+    Size? size = containerSize;
     if (alignment == Alignment.topLeft) {
-      childOffset = Offset(0, 0);
+      childOffset = const Offset(0, 0);
     } else if (alignment == Alignment.topCenter) {
-      childOffset = Offset(size.width / 2 - childSize.width / 2, 0);
+      childOffset = Offset(size!.width / 2 - childSize.width / 2, 0);
     } else if (alignment == Alignment.topRight) {
-      childOffset = Offset(size.width - childSize.width, 0);
+      childOffset = Offset(size!.width - childSize.width, 0);
     } else if (alignment == Alignment.centerRight) {
       childOffset = Offset(
-          size.width - childSize.width, size.height / 2 - childSize.height / 2);
+          size!.width - childSize.width, size.height / 2 - childSize.height / 2);
     } else if (alignment == Alignment.bottomRight) {
       childOffset =
-          Offset(size.width - childSize.width, size.height - childSize.height);
+          Offset(size!.width - childSize.width, size.height - childSize.height);
     } else if (alignment == Alignment.bottomCenter) {
       childOffset = Offset(
-          size.width / 2 - childSize.width / 2, size.height - childSize.height);
+          size!.width / 2 - childSize.width / 2, size.height - childSize.height);
     } else if (alignment == Alignment.bottomLeft) {
-      childOffset = Offset(0, size.height - childSize.height);
+      childOffset = Offset(0, size!.height - childSize.height);
     } else if (alignment == Alignment.centerLeft) {
-      childOffset = Offset(0, size.height / 2 - childSize.height / 2);
+      childOffset = Offset(0, size!.height / 2 - childSize.height / 2);
     } else {
-      childOffset = Offset(size.width / 2 - childSize.width / 2,
+      childOffset = Offset(size!.width / 2 - childSize.width / 2,
           size.height / 2 - childSize.height / 2);
     }
     if (childMargin != null) {
@@ -571,7 +573,7 @@ class _FSuperState extends State<FSuper> {
           childMargin.top - childMargin.bottom);
     }
     if(widget.margin != null){
-      childOffset = childOffset.translate(widget.margin.left, widget.margin.top);
+      childOffset = childOffset.translate(widget.margin!.left, widget.margin!.top);
     }
     return childOffset;
   }
@@ -579,9 +581,9 @@ class _FSuperState extends State<FSuper> {
   Widget buildRedPoint() {
     bool redPointTextEmpty =
         widget.redPointText == null || widget.redPointText == "";
-    Color redPointTextColor = widget.redPointTextStyle?.color ?? Colors.white;
+    Color redPointTextColor = widget.redPointTextStyle.color ?? Colors.white;
     double redPointTextSize =
-        redPointTextEmpty ? 0.0 : (widget.redPointTextStyle?.fontSize ?? 0.0);
+        redPointTextEmpty ? 0.0 : (widget.redPointTextStyle.fontSize ?? 0.0);
     var offset = widget.redPointOffset ??
         Offset(widget.redPointSize / 2.0, widget.redPointSize / 2.0);
     var redPointPart = Positioned(
@@ -613,16 +615,15 @@ class _FSuperState extends State<FSuper> {
   }
 }
 
-typedef void _OnChildSizeChange(Size size);
 
 class _MeasureSize extends StatefulWidget {
   final Widget child;
-  final _OnChildSizeChange onChange;
+  final void Function(Size?) onChange;
 
   const _MeasureSize({
-    Key key,
-    @required this.onChange,
-    @required this.child,
+    Key? key,
+    required this.onChange,
+    required this.child,
   }) : super(key: key);
 
   @override
@@ -631,7 +632,7 @@ class _MeasureSize extends StatefulWidget {
 
 class _MeasureSizeState extends State<_MeasureSize> {
   GlobalKey key = GlobalKey();
-  Size oldSize = Size.zero;
+  Size? oldSize = Size.zero;
 
   @override
   Widget build(BuildContext context) {
@@ -655,18 +656,7 @@ class _MeasureSizeState extends State<_MeasureSize> {
 }
 
 class _Stack extends MultiChildRenderObjectWidget {
-  /// Creates a stack layout widget.
-  ///
-  /// By default, the non-positioned children of the stack are aligned by their
-  /// top left corners.
-  _Stack({
-    Key key,
-    this.alignment = AlignmentDirectional.topStart,
-    this.textDirection,
-    this.fit = StackFit.loose,
-    this.overflow = Overflow.clip,
-    List<Widget> children = const <Widget>[],
-  }) : super(key: key, children: children);
+
 
   /// How to align the non-positioned and partially-positioned children in the
   /// stack.
@@ -694,7 +684,7 @@ class _Stack extends MultiChildRenderObjectWidget {
   /// The text direction with which to resolve [alignment].
   ///
   /// Defaults to the ambient [Directionality].
-  final TextDirection textDirection;
+  final TextDirection? textDirection;
 
   /// How to size the non-positioned children in the stack.
   ///
@@ -707,7 +697,20 @@ class _Stack extends MultiChildRenderObjectWidget {
   ///
   /// Some children in a stack might overflow its box. When this flag is set to
   /// [Overflow.clip], children cannot paint outside of the stack's box.
-  final Overflow overflow;
+  final Clip overflow;
+
+  /// Creates a stack layout widget.
+  ///
+  /// By default, the non-positioned children of the stack are aligned by their
+  /// top left corners.
+  _Stack({
+    Key? key,
+    this.alignment = AlignmentDirectional.topStart,
+    this.textDirection,
+    this.fit = StackFit.loose,
+    this.overflow = Clip.none,
+    List<Widget> children = const <Widget>[],
+  }) : super(key: key, children: children);
 
   @override
   _RenderStack createRenderObject(BuildContext context) {
@@ -736,7 +739,7 @@ class _Stack extends MultiChildRenderObjectWidget {
     properties.add(EnumProperty<TextDirection>('textDirection', textDirection,
         defaultValue: null));
     properties.add(EnumProperty<StackFit>('fit', fit));
-    properties.add(EnumProperty<Overflow>('overflow', overflow));
+    properties.add(EnumProperty<Clip>('overflow', overflow));
   }
 }
 
@@ -749,15 +752,12 @@ class _RenderStack extends RenderBox
   /// By default, the non-positioned children of the stack are aligned by their
   /// top left corners.
   _RenderStack({
-    List<RenderBox> children,
+    List<RenderBox>? children,
     AlignmentGeometry alignment = AlignmentDirectional.topStart,
-    TextDirection textDirection,
+    TextDirection? textDirection,
     StackFit fit = StackFit.loose,
-    Overflow overflow = Overflow.clip,
-  })  : assert(alignment != null),
-        assert(fit != null),
-        assert(overflow != null),
-        _alignment = alignment,
+    Clip overflow = Clip.none,
+  })  : _alignment = alignment,
         _textDirection = textDirection,
         _fit = fit,
         _overflow = overflow {
@@ -768,11 +768,12 @@ class _RenderStack extends RenderBox
 
   @override
   void setupParentData(RenderBox child) {
-    if (child.parentData is! StackParentData)
+    if (child.parentData is! StackParentData) {
       child.parentData = StackParentData();
+    }
   }
 
-  Alignment _resolvedAlignment;
+  Alignment? _resolvedAlignment;
 
   void _resolve() {
     if (_resolvedAlignment != null) return;
@@ -803,7 +804,6 @@ class _RenderStack extends RenderBox
   AlignmentGeometry _alignment;
 
   set alignment(AlignmentGeometry value) {
-    assert(value != null);
     if (_alignment == value) return;
     _alignment = value;
     _markNeedResolution();
@@ -813,10 +813,10 @@ class _RenderStack extends RenderBox
   ///
   /// This may be changed to null, but only after the [alignment] has been changed
   /// to a value that does not depend on the direction.
-  TextDirection get textDirection => _textDirection;
-  TextDirection _textDirection;
+  TextDirection? get textDirection => _textDirection;
+  TextDirection? _textDirection;
 
-  set textDirection(TextDirection value) {
+  set textDirection(TextDirection? value) {
     if (_textDirection == value) return;
     _textDirection = value;
     _markNeedResolution();
@@ -831,7 +831,6 @@ class _RenderStack extends RenderBox
   StackFit _fit;
 
   set fit(StackFit value) {
-    assert(value != null);
     if (_fit != value) {
       _fit = value;
       markNeedsLayout();
@@ -842,11 +841,10 @@ class _RenderStack extends RenderBox
   ///
   /// Some children in a stack might overflow its box. When this flag is set to
   /// [Overflow.clip], children cannot paint outside of the stack's box.
-  Overflow get overflow => _overflow;
-  Overflow _overflow;
+  Clip get overflow => _overflow;
+  Clip _overflow;
 
-  set overflow(Overflow value) {
-    assert(value != null);
+  set overflow(Clip value) {
     if (_overflow != value) {
       _overflow = value;
       markNeedsPaint();
@@ -855,14 +853,15 @@ class _RenderStack extends RenderBox
 
   /// Helper function for calculating the intrinsics metrics of a Stack.
   static double getIntrinsicDimension(
-      RenderBox firstChild, double mainChildSizeGetter(RenderBox child)) {
+      RenderBox? firstChild, double Function(RenderBox child) mainChildSizeGetter) {
     double extent = 0.0;
-    RenderBox child = firstChild;
+    RenderBox? child = firstChild;
     while (child != null) {
       final StackParentData childParentData =
           child.parentData as StackParentData;
-      if (!childParentData.isPositioned)
+      if (!childParentData.isPositioned) {
         extent = math.max(extent, mainChildSizeGetter(child));
+      }
       assert(child.parentData == childParentData);
       child = childParentData.nextSibling;
     }
@@ -894,7 +893,7 @@ class _RenderStack extends RenderBox
   }
 
   @override
-  double computeDistanceToActualBaseline(TextBaseline baseline) {
+  double? computeDistanceToActualBaseline(TextBaseline baseline) {
     return defaultComputeDistanceToHighestActualBaseline(baseline);
   }
 
@@ -902,50 +901,53 @@ class _RenderStack extends RenderBox
   ///
   /// Returns true when the child has visual overflow.
   static bool layoutPositionedChild(RenderBox child,
-      StackParentData childParentData, Size size, Alignment alignment) {
+      StackParentData childParentData, Size size, Alignment? alignment) {
     assert(childParentData.isPositioned);
     assert(child.parentData == childParentData);
 
     bool hasVisualOverflow = false;
     BoxConstraints childConstraints = const BoxConstraints();
 
-    if (childParentData.left != null && childParentData.right != null)
+    if (childParentData.left != null && childParentData.right != null) {
       childConstraints = childConstraints.tighten(
-          width: size.width - childParentData.right - childParentData.left);
-    else if (childParentData.width != null)
+          width: size.width - childParentData.right! - childParentData.left!);
+    } else if (childParentData.width != null) {
       childConstraints = childConstraints.tighten(width: childParentData.width);
+    }
 
-    if (childParentData.top != null && childParentData.bottom != null)
+    if (childParentData.top != null && childParentData.bottom != null) {
       childConstraints = childConstraints.tighten(
-          height: size.height - childParentData.bottom - childParentData.top);
-    else if (childParentData.height != null)
+          height: size.height - childParentData.bottom! - childParentData.top!);
+    } else if (childParentData.height != null) {
       childConstraints =
           childConstraints.tighten(height: childParentData.height);
+    }
 
     child.layout(childConstraints, parentUsesSize: true);
 
-    double x;
+    double? x;
     if (childParentData.left != null) {
       x = childParentData.left;
     } else if (childParentData.right != null) {
-      x = size.width - childParentData.right - child.size.width;
+      x = size.width - childParentData.right! - child.size.width;
     } else {
-      x = alignment.alongOffset(size - child.size as Offset).dx;
+      x = alignment!.alongOffset(size - child.size as Offset).dx;
     }
 
-    if (x < 0.0 || x + child.size.width > size.width) hasVisualOverflow = true;
+    if (x! < 0.0 || x + child.size.width > size.width) hasVisualOverflow = true;
 
-    double y;
+    double? y;
     if (childParentData.top != null) {
       y = childParentData.top;
     } else if (childParentData.bottom != null) {
-      y = size.height - childParentData.bottom - child.size.height;
+      y = size.height - childParentData.bottom! - child.size.height;
     } else {
-      y = alignment.alongOffset(size - child.size as Offset).dy;
+      y = alignment!.alongOffset(size - child.size as Offset).dy;
     }
 
-    if (y < 0.0 || y + child.size.height > size.height)
+    if (y! < 0.0 || y + child.size.height > size.height) {
       hasVisualOverflow = true;
+    }
 
     childParentData.offset = Offset(x, y);
 
@@ -968,8 +970,7 @@ class _RenderStack extends RenderBox
     double width = constraints.minWidth;
     double height = constraints.minHeight;
 
-    BoxConstraints nonPositionedConstraints;
-    assert(fit != null);
+    BoxConstraints? nonPositionedConstraints;
     switch (fit) {
       case StackFit.loose:
         nonPositionedConstraints = constraints.loosen();
@@ -981,9 +982,8 @@ class _RenderStack extends RenderBox
         nonPositionedConstraints = constraints;
         break;
     }
-    assert(nonPositionedConstraints != null);
 
-    RenderBox child = firstChild;
+    RenderBox? child = firstChild;
     while (child != null) {
       final StackParentData childParentData =
           child.parentData as StackParentData;
@@ -1018,7 +1018,7 @@ class _RenderStack extends RenderBox
 
       if (!childParentData.isPositioned) {
         childParentData.offset =
-            _resolvedAlignment.alongOffset(size - child.size as Offset);
+            _resolvedAlignment!.alongOffset(size - child.size as Offset);
       } else {
         _hasVisualOverflow = layoutPositionedChild(
                 child, childParentData, size, _resolvedAlignment) ||
@@ -1031,7 +1031,7 @@ class _RenderStack extends RenderBox
   }
 
   @override
-  bool hitTestChildren(BoxHitTestResult result, {Offset position}) {
+  bool hitTestChildren(BoxHitTestResult result, {required Offset position}) {
     return defaultHitTestChildren(result, position: position);
   }
 
@@ -1046,7 +1046,7 @@ class _RenderStack extends RenderBox
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    if (_overflow == Overflow.clip && _hasVisualOverflow) {
+    if (_overflow == Clip.none && _hasVisualOverflow) {
       context.pushClipRect(
           needsCompositing, offset, Offset.zero & size, paintStack);
     } else {
@@ -1055,7 +1055,7 @@ class _RenderStack extends RenderBox
   }
 
   @override
-  Rect describeApproximatePaintClip(RenderObject child) =>
+  Rect? describeApproximatePaintClip(RenderObject child) =>
       _hasVisualOverflow ? Offset.zero & size : null;
 
   @override
@@ -1065,10 +1065,11 @@ class _RenderStack extends RenderBox
         .add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
     properties.add(EnumProperty<TextDirection>('textDirection', textDirection));
     properties.add(EnumProperty<StackFit>('fit', fit));
-    properties.add(EnumProperty<Overflow>('overflow', overflow));
+    properties.add(EnumProperty<Clip>('overflow', overflow));
   }
 
-  bool hitTest(BoxHitTestResult result, {@required Offset position}) {
+  @override
+  bool hitTest(BoxHitTestResult result, {required Offset position}) {
     if (hitTestChildren(result, position: position) || hitTestSelf(position)) {
       result.add(BoxHitTestEntry(this, position));
       return true;
