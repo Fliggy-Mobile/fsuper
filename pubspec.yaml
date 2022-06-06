@@ -1,17 +1,17 @@
 name: fsuper
 description: FSuper can help developers build complex views quickly and comfortably.
-version: 2.0.2
+version: 2.1.0
 author: CoorChice<coorchice.cb@alibaba-inc.com>
 homepage: https://github.com/Fliggy-Mobile/fsuper
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  fcontrol: ^1.0.0
+  fcontrol: ^2.0.0
 
 dev_dependencies:
   flutter_test:

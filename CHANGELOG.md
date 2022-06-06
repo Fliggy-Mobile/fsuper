@@ -1,3 +1,6 @@
+## 2.1.0
+- Support null-safety
+
 ## 2.0.2
 
 - fix `maxWidth` not work
