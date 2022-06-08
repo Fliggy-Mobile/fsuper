@@ -478,7 +478,7 @@ class _FSuperState extends State<FSuper> {
 
     /// build up
     var stackPart = _Stack(
-      overflow: Overflow.visible,
+      clipBehavior: Clip.none,
       children: children,
     );
     return stackPart;
@@ -677,7 +677,7 @@ class _Stack extends MultiChildRenderObjectWidget {
     this.alignment = AlignmentDirectional.topStart,
     this.textDirection,
     this.fit = StackFit.loose,
-    this.overflow = Overflow.clip,
+    this.clipBehavior = Clip.hardEdge,
     List<Widget> children = const <Widget>[],
   }) : super(key: key, children: children);
 
@@ -720,7 +720,7 @@ class _Stack extends MultiChildRenderObjectWidget {
   ///
   /// Some children in a stack might overflow its box. When this flag is set to
   /// [Overflow.clip], children cannot paint outside of the stack's box.
-  final Overflow overflow;
+  final Clip clipBehavior;
 
   @override
   _RenderStack createRenderObject(BuildContext context) {
@@ -728,7 +728,7 @@ class _Stack extends MultiChildRenderObjectWidget {
       alignment: alignment,
       textDirection: textDirection ?? Directionality.of(context),
       fit: fit,
-      overflow: overflow,
+      clipBehavior: clipBehavior,
     );
   }
 
@@ -738,7 +738,7 @@ class _Stack extends MultiChildRenderObjectWidget {
       ..alignment = alignment
       ..textDirection = textDirection ?? Directionality.of(context)
       ..fit = fit
-      ..overflow = overflow;
+      ..clipBehavior = clipBehavior;
   }
 
   @override
@@ -749,7 +749,7 @@ class _Stack extends MultiChildRenderObjectWidget {
     properties.add(EnumProperty<TextDirection>('textDirection', textDirection,
         defaultValue: null));
     properties.add(EnumProperty<StackFit>('fit', fit));
-    properties.add(EnumProperty<Overflow>('overflow', overflow));
+    properties.add(EnumProperty<Clip>('clipBehavior', clipBehavior));
   }
 }
 
@@ -766,14 +766,14 @@ class _RenderStack extends RenderBox
     AlignmentGeometry alignment = AlignmentDirectional.topStart,
     required TextDirection textDirection,
     StackFit fit = StackFit.loose,
-    Overflow overflow = Overflow.clip,
+    Clip clipBehavior = Clip.hardEdge,
   })  : assert(alignment != null),
         assert(fit != null),
-        assert(overflow != null),
+        assert(clipBehavior != null),
         _alignment = alignment,
         _textDirection = textDirection,
         _fit = fit,
-        _overflow = overflow {
+        _clipBehavior = clipBehavior {
     addAll(children);
   }
 
@@ -855,13 +855,13 @@ class _RenderStack extends RenderBox
   ///
   /// Some children in a stack might overflow its box. When this flag is set to
   /// [Overflow.clip], children cannot paint outside of the stack's box.
-  Overflow get overflow => _overflow;
-  Overflow _overflow;
+  Clip get clipBehavior => _clipBehavior;
+  Clip _clipBehavior;
 
-  set overflow(Overflow value) {
+  set clipBehavior(Clip value) {
     assert(value != null);
-    if (_overflow != value) {
-      _overflow = value;
+    if (_clipBehavior != value) {
+      _clipBehavior = value;
       markNeedsPaint();
     }
   }
@@ -1060,7 +1060,7 @@ class _RenderStack extends RenderBox
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    if (_overflow == Overflow.clip && _hasVisualOverflow) {
+    if (_clipBehavior != Clip.none && _hasVisualOverflow) {
       context.pushClipRect(
           needsCompositing, offset, Offset.zero & size, paintStack);
     } else {
@@ -1079,7 +1079,7 @@ class _RenderStack extends RenderBox
         .add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
     properties.add(EnumProperty<TextDirection>('textDirection', textDirection));
     properties.add(EnumProperty<StackFit>('fit', fit));
-    properties.add(EnumProperty<Overflow>('overflow', overflow));
+    properties.add(EnumProperty<Clip>('clipBehavior', clipBehavior));
   }
 
   bool hitTest(BoxHitTestResult result, {required Offset position}) {

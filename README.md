@@ -17,7 +17,7 @@
 <p>
 
 <a href="https://pub.dev/packages/fsuper#-readme-tab-">
-    <img height="20" src="https://img.shields.io/badge/Version-2.1.0-important.svg">
+    <img height="20" src="https://img.shields.io/badge/Version-2.1.1-important.svg">
 </a>
 
 
