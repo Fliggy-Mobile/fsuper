@@ -340,7 +340,7 @@ class _FSuperState extends State<FSuper> {
   void _handleSizeChanged(duration) {
     if (!mounted) return;
     RenderBox rootBox = rootKey.currentContext?.findRenderObject() as RenderBox;
-    if (rootBox != null && containerSize != rootBox.size) {
+    if (rootBox != null && rootBox.hasSize && containerSize != rootBox.size) {
       setState(() {
         containerSize = rootBox.size;
       });
@@ -924,13 +924,16 @@ class _RenderStack extends RenderBox
 
     if (childParentData.left != null && childParentData.right != null)
       childConstraints = childConstraints.tighten(
-          width: size.width - (childParentData.right ?? 0) - (childParentData.left ?? 0));
+          width: size.width -
+              (childParentData.right ?? 0) -
+              (childParentData.left ?? 0));
     else if (childParentData.width != null)
       childConstraints = childConstraints.tighten(width: childParentData.width);
 
     if (childParentData.top != null && childParentData.bottom != null)
       childConstraints = childConstraints.tighten(
-          height: size.height - (childParentData.bottom ?? 0) -
+          height: size.height -
+              (childParentData.bottom ?? 0) -
               (childParentData.top ?? 0));
     else if (childParentData.height != null)
       childConstraints =

@@ -1,3 +1,6 @@
+## 2.1.2
+- 修复从 RenderBox 获取 size 时的异常
+
 ## 2.1.0
 - Support null-safety
 
