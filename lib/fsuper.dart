@@ -659,8 +659,13 @@ class _MeasureSizeState extends State<_MeasureSize> {
     var context = key.currentContext;
     if (context == null) return;
 
-    var newSize = context.size;
-    if (oldSize == newSize) return;
+    Size? newSize = Size.zero;
+    try {
+      newSize = context.size;
+    } catch (e) {
+      print(e);
+    }
+    if (oldSize == (newSize ?? Size.zero)) return;
 
     oldSize = newSize ?? Size.zero;
     widget.onChange(newSize ?? Size.zero);
