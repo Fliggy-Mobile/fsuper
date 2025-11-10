@@ -1,3 +1,33 @@
+---
+# 文档可用dumi的markdown增强语法（https://d.umijs.org/guide/markdown）
+title: fsuper
+subtitle: 能够帮助开发者快速舒适的构建复杂视图。
+toc: content
+group:
+  title: 样式 # 此处填写：组件所属的分组："通用","工具","样式","布局","导航","弹窗","数据录入","数据展示","反馈","其他"
+  order: 100  # 分组在组件库的展示顺序，必须大于0
+pkgName:   # 此处填写：组件简介，用于快速浏览和查询
+cover:       # 此处填写：组件封面
+order: 100  # 在分组内的展示顺序，必须大于0
+links:
+  gitlab: https://code.alibaba-inc.com/fapi/fsuper # 此处填写：组件仓库地址
+  design:   # 此处填写：组件设计规范，可选，值为 https://fliggy-design.alibaba-inc.com/design/267000244 设计规范地址的最后id
+supports:   # 此处填写：支持的平台
+  - ios
+  - android
+  - harmony
+
+author:
+  name: 纽特
+  email: # 此处填写：作者邮箱
+  userId: # 此处填写：作者用户id
+---
+
+<FlutterBasicInfo></FlutterBasicInfo>
+
+<!-- 以下为文档正文 -->
+
+
 <p align="center">
   <a href="https://github.com/Fliggy-Mobile">
     <img width="200" src="https://gw.alicdn.com/tfs/TB1a288sxD1gK0jSZFKXXcJrVXa-360-360.png">
