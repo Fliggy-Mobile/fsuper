@@ -1,3 +1,14 @@
+## 2.2.0
+
+- Add `maxLines` and `overflow` so text can be truncated with an ellipsis
+  instead of always being clipped.
+- Add `pressedColor` for tap-down highlight feedback. It reuses the existing
+  gesture detector, so `onClick` / `onChild1Click` / `onChild2Click` behaviour
+  is unchanged, and leaving it null keeps the previous no-feedback behaviour.
+- Remove a leftover `print` from the size-measurement path.
+- Drop dartdoc links to the `Overflow` type, which Flutter removed long ago.
+- Remove internal-only metadata from the public repository.
+
 ## 2.1.3
 - 修复一个获取 size 时的异常
 

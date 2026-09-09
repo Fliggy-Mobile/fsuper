@@ -13,7 +13,7 @@
 
 <p>It supports rich text, rounded corners, borders, pictures, small red dots, and set up to two sub-components at the same time, and control their relative positions, high-quality Neumorphism style.</p>
 
-<p><strong>Author：<a href="https://github.com/chenBingX">Newton</a>(<a href="coorchice.cb@alibaba-inc.com">coorchice.cb@alibaba-inc.com</a>)</strong></p>
+<p><strong>Author：<a href="https://github.com/chenBingX">Newton</a></strong></p>
 <p>
 
 <a href="https://pub.dev/packages/fsuper#-readme-tab-">
@@ -470,7 +470,7 @@ dependencies:
 # 💡 License
 
 ```
-Copyright 2020-present Fliggy Android Team <alitrip_android@list.alibaba-inc.com>.
+Copyright 2020-present Fliggy Android Team.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

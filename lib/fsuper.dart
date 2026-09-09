@@ -1,4 +1,4 @@
-/// Copyright 1999-2020 Fliggy Android Team <alitrip_android@list.alibaba-inc.com>.
+/// Copyright 1999-2020 Fliggy Android Team.
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -52,6 +52,17 @@ class FSuper extends StatefulWidget {
   ///
   /// Text content
   final String? text;
+
+  /// 文本最多显示的行数。超出后按 [overflow] 处理。
+  ///
+  /// Maximum number of lines for [text]. Content beyond it is handled by [overflow].
+  final int? maxLines;
+
+  /// 文本超出 [maxLines] 或可用宽度时的处理方式，例如 [TextOverflow.ellipsis]。
+  ///
+  /// How to handle [text] that exceeds [maxLines] or the available width,
+  /// e.g. [TextOverflow.ellipsis].
+  final TextOverflow? overflow;
 
   /// Widget 文本样式
   ///
@@ -240,6 +251,14 @@ class FSuper extends StatefulWidget {
   /// After the Neumorphism style is turned on, the bright shadow color
   final Color? highlightShadowColor;
 
+  /// 按下时的背景色。设置后点击会有高亮反馈，抬起或取消后恢复 [backgroundColor]。
+  /// 不设置（null）则完全没有按压反馈，与历史行为一致。
+  ///
+  /// Background color while pressed. Setting this gives tap-down highlight
+  /// feedback, restored to [backgroundColor] on tap up / cancel.
+  /// Left null there is no press feedback, matching the previous behaviour.
+  final Color? pressedColor;
+
   /// 开启 Neumorphism 风格后，是否呈浮起效果，否则为凹陷效果，默认为 true
   ///
   /// Whether the Neumorphism style is turned on, whether it is a floating effect, otherwise it is a concave effect, the default is true
@@ -251,6 +270,8 @@ class FSuper extends StatefulWidget {
     this.maxWidth,
     this.maxHeight,
     this.text,
+    this.maxLines,
+    this.overflow,
     this.textAlignment,
     this.textAlign,
     this.spans,
@@ -285,6 +306,7 @@ class FSuper extends StatefulWidget {
     this.strutStyle,
     this.isSupportNeumorphism = false,
     this.highlightShadowColor,
+    this.pressedColor,
     this.lightOrientation,
     this.float = true,
   });
@@ -335,6 +357,16 @@ class _FSuperState extends State<FSuper> {
   void initState() {
     WidgetsBinding.instance?.addPostFrameCallback(_handleSizeChanged);
     super.initState();
+  }
+
+  /// 是否处于按下状态，仅用于 [FSuper.pressedColor] 的高亮反馈。
+  bool _pressed = false;
+
+  void _setPressed(bool value) {
+    if (_pressed == value) return;
+    setState(() {
+      _pressed = value;
+    });
   }
 
   void _handleSizeChanged(duration) {
@@ -389,6 +421,8 @@ class _FSuperState extends State<FSuper> {
     var textPart = Text.rich(
       TextSpan(text: widget.text, children: widget.spans),
       textAlign: widget.textAlign ?? TextAlign.center,
+      maxLines: widget.maxLines,
+      overflow: widget.overflow ?? TextOverflow.clip,
       style: widget.style,
       strutStyle: widget.strutStyle,
       textHeightBehavior: TextHeightBehavior(
@@ -434,6 +468,7 @@ class _FSuperState extends State<FSuper> {
           ? FAppearance.Neumorphism
           : FAppearance.Material,
       colorForCallback: (sender, state) {
+        if (_pressed && widget.pressedColor != null) return widget.pressedColor!;
         return widget.backgroundColor ?? Colors.transparent;
       },
       userInteractive: false,
@@ -459,6 +494,11 @@ class _FSuperState extends State<FSuper> {
       margin: widget.margin,
       child: GestureDetector(
         onTap: widget.onClick,
+        onTapDown: widget.pressedColor == null
+            ? null
+            : (_) => _setPressed(true),
+        onTapUp: widget.pressedColor == null ? null : (_) => _setPressed(false),
+        onTapCancel: widget.pressedColor == null ? null : () => _setPressed(false),
         child: containerPart,
       ),
     ));
@@ -663,7 +703,9 @@ class _MeasureSizeState extends State<_MeasureSize> {
     try {
       newSize = context.size;
     } catch (e) {
-      print(e);
+      // The render object can be torn down between frames; fall back to zero
+      // instead of logging on every occurrence.
+      newSize = Size.zero;
     }
     if (oldSize == (newSize ?? Size.zero)) return;
 
@@ -721,10 +763,10 @@ class _Stack extends MultiChildRenderObjectWidget {
   /// ([StackFit.expand]).
   final StackFit fit;
 
-  /// Whether overflowing children should be clipped. See [Overflow].
+  /// Whether overflowing children should be clipped.
   ///
   /// Some children in a stack might overflow its box. When this flag is set to
-  /// [Overflow.clip], children cannot paint outside of the stack's box.
+  /// When clipping is on, children cannot paint outside of the stack's box.
   final Clip clipBehavior;
 
   @override
@@ -856,10 +898,10 @@ class _RenderStack extends RenderBox
     }
   }
 
-  /// Whether overflowing children should be clipped. See [Overflow].
+  /// Whether overflowing children should be clipped.
   ///
   /// Some children in a stack might overflow its box. When this flag is set to
-  /// [Overflow.clip], children cannot paint outside of the stack's box.
+  /// When clipping is on, children cannot paint outside of the stack's box.
   Clip get clipBehavior => _clipBehavior;
   Clip _clipBehavior;
 

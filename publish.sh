@@ -13,4 +13,4 @@ do
     sleep 1
 done
 
-dart pub publish --server=https://pub.dartlang.org
+dart pub publish --server=https://pub.dev
