@@ -265,6 +265,7 @@ class FSuper extends StatefulWidget {
   final bool float;
 
   FSuper({
+    Key? key,
     this.width,
     this.height,
     this.maxWidth,
@@ -309,7 +310,7 @@ class FSuper extends StatefulWidget {
     this.pressedColor,
     this.lightOrientation,
     this.float = true,
-  });
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -319,6 +320,9 @@ class FSuper extends StatefulWidget {
   /// 在富文本 [spans] 中插入垂直方向的文字间距
   ///
   /// Insert vertical spacing in rich text [spans]
+  // Long-standing public API: `FSuper.VerticalSpace(...)` is used by the example
+  // app and by consumers, so renaming it would be source-breaking.
+  // ignore: non_constant_identifier_names
   static TextSpan VerticalSpace(double space) {
     return TextSpan(
         text: '\n \n',
@@ -331,6 +335,8 @@ class FSuper extends StatefulWidget {
   /// 在富文本 [spans] 中插入水平方向的文字间距
   ///
   /// Insert horizontal spacing in rich text [spans]
+  // Same reason as VerticalSpace above: public API, renaming would break callers.
+  // ignore: non_constant_identifier_names
   static TextSpan HorizontalSpace(double space) {
     return TextSpan(
         text: " ",
@@ -355,6 +361,9 @@ class _FSuperState extends State<FSuper> {
   /// Finally, the drawing will be triggered again.
   @override
   void initState() {
+    // See the note in _handleSizeChanged: `?.` is kept for the Flutter 2.x end
+    // of the declared SDK range.
+    // ignore: invalid_null_aware_operator
     WidgetsBinding.instance?.addPostFrameCallback(_handleSizeChanged);
     super.initState();
   }
@@ -371,12 +380,21 @@ class _FSuperState extends State<FSuper> {
 
   void _handleSizeChanged(duration) {
     if (!mounted) return;
-    RenderBox rootBox = rootKey.currentContext?.findRenderObject() as RenderBox;
-    if (rootBox != null && rootBox.hasSize && containerSize != rootBox.size) {
+    // The old `... as RenderBox` threw whenever the context disappeared between
+    // frames, and the `rootBox != null` guard after it could never help: the
+    // cast runs first. Pattern-match instead so a torn-down tree is skipped.
+    final renderObject = rootKey.currentContext?.findRenderObject();
+    if (renderObject is RenderBox &&
+        renderObject.hasSize &&
+        containerSize != renderObject.size) {
       setState(() {
-        containerSize = rootBox.size;
+        containerSize = renderObject.size;
       });
     }
+    // `instance` is non-nullable from Flutter 3.0 on, but the declared SDK floor
+    // (>=2.12.0) still covers Flutter 2.x, where it is nullable and `.` would not
+    // compile. Keeping `?.` trades a warning for compatibility across the range.
+    // ignore: invalid_null_aware_operator
     WidgetsBinding.instance?.addPostFrameCallback(_handleSizeChanged);
   }
 
@@ -525,8 +543,7 @@ class _FSuperState extends State<FSuper> {
   }
 
   double get _shadowBlur {
-    if ((widget.shadowBlur == null || widget.shadowBlur == 0.0) &&
-        widget.isSupportNeumorphism) {
+    if (widget.shadowBlur == 0.0 && widget.isSupportNeumorphism) {
       return 6.0;
     } else {
       return widget.shadowBlur;
@@ -688,6 +705,8 @@ class _MeasureSizeState extends State<_MeasureSize> {
 
   @override
   Widget build(BuildContext context) {
+    // Same Flutter 2.x compatibility reason as in _FSuperState.initState.
+    // ignore: invalid_null_aware_operator
     SchedulerBinding.instance?.addPostFrameCallback(postFrameCallback);
     return Container(
       key: key,
@@ -719,11 +738,12 @@ class _Stack extends MultiChildRenderObjectWidget {
   ///
   /// By default, the non-positioned children of the stack are aligned by their
   /// top left corners.
+  // `alignment`, `textDirection` and `fit` used to be constructor parameters,
+  // but the only call site never passed them, so the defaults always applied.
+  // They stay as fields with those same defaults: createRenderObject,
+  // updateRenderObject and debugFillProperties all still read them.
   _Stack({
     Key? key,
-    this.alignment = AlignmentDirectional.topStart,
-    this.textDirection,
-    this.fit = StackFit.loose,
     this.clipBehavior = Clip.hardEdge,
     List<Widget> children = const <Widget>[],
   }) : super(key: key, children: children);
@@ -749,19 +769,19 @@ class _Stack extends MultiChildRenderObjectWidget {
   ///    specify an [AlignmentGeometry].
   ///  * [AlignmentDirectional], like [Alignment] for specifying alignments
   ///    relative to text direction.
-  final AlignmentGeometry alignment;
+  final AlignmentGeometry alignment = AlignmentDirectional.topStart;
 
   /// The text direction with which to resolve [alignment].
   ///
   /// Defaults to the ambient [Directionality].
-  final TextDirection? textDirection;
+  final TextDirection? textDirection = null;
 
   /// How to size the non-positioned children in the stack.
   ///
   /// The constraints passed into the [Stack] from its parent are either
   /// loosened ([StackFit.loose]) or tightened to their biggest size
   /// ([StackFit.expand]).
-  final StackFit fit;
+  final StackFit fit = StackFit.loose;
 
   /// Whether overflowing children should be clipped.
   ///
@@ -814,10 +834,7 @@ class _RenderStack extends RenderBox
     required TextDirection textDirection,
     StackFit fit = StackFit.loose,
     Clip clipBehavior = Clip.hardEdge,
-  })  : assert(alignment != null),
-        assert(fit != null),
-        assert(clipBehavior != null),
-        _alignment = alignment,
+  })  : _alignment = alignment,
         _textDirection = textDirection,
         _fit = fit,
         _clipBehavior = clipBehavior {
@@ -863,7 +880,6 @@ class _RenderStack extends RenderBox
   AlignmentGeometry _alignment;
 
   set alignment(AlignmentGeometry value) {
-    assert(value != null);
     if (_alignment == value) return;
     _alignment = value;
     _markNeedResolution();
@@ -891,7 +907,6 @@ class _RenderStack extends RenderBox
   StackFit _fit;
 
   set fit(StackFit value) {
-    assert(value != null);
     if (_fit != value) {
       _fit = value;
       markNeedsLayout();
@@ -906,7 +921,6 @@ class _RenderStack extends RenderBox
   Clip _clipBehavior;
 
   set clipBehavior(Clip value) {
-    assert(value != null);
     if (_clipBehavior != value) {
       _clipBehavior = value;
       markNeedsPaint();
@@ -1033,7 +1047,6 @@ class _RenderStack extends RenderBox
     double height = constraints.minHeight;
 
     BoxConstraints nonPositionedConstraints;
-    assert(fit != null);
     switch (fit) {
       case StackFit.loose:
         nonPositionedConstraints = constraints.loosen();
@@ -1045,7 +1058,6 @@ class _RenderStack extends RenderBox
         nonPositionedConstraints = constraints;
         break;
     }
-    assert(nonPositionedConstraints != null);
 
     RenderBox? child = firstChild;
     while (child != null) {

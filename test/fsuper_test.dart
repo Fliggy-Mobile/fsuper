@@ -255,17 +255,13 @@ void main() {
 
     testWidgets('pressed state does not leak into a freshly created widget',
         (tester) async {
-      // NOTE: FSuper's constructor does not accept a `key`, so the subtree is
-      // keyed from the outside to force a brand-new Element/State.
-      Widget slot(String id) => host(KeyedSubtree(
+      Widget slot(String id) => host(FSuper(
             key: ValueKey(id),
-            child: FSuper(
-              width: 100,
-              height: 40,
-              text: 'tap',
-              backgroundColor: bg,
-              pressedColor: pressed,
-            ),
+            width: 100,
+            height: 40,
+            text: 'tap',
+            backgroundColor: bg,
+            pressedColor: pressed,
           ));
 
       await tester.pumpWidget(slot('a'));
@@ -324,6 +320,90 @@ void main() {
       )));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
+    });
+  });
+
+  group('key support', () {
+    testWidgets('FSuper accepts a key and forwards it to the Element',
+        (tester) async {
+      const k = ValueKey<String>('fsuper-key');
+      await tester.pumpWidget(host(FSuper(
+        key: k,
+        width: 100,
+        height: 40,
+        text: 'keyed',
+      )));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(k), findsOneWidget);
+      expect(tester.widget<FSuper>(find.byType(FSuper)).key, k);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('two keyed FSuper siblings keep independent state',
+        (tester) async {
+      const bg = Color(0xFF00FF00);
+      const pressed = Color(0xFFFF0000);
+      await tester.pumpWidget(MaterialApp(
+        home: Scaffold(
+          body: Column(children: [
+            FSuper(
+              key: const ValueKey('first'),
+              width: 100,
+              height: 40,
+              text: 'a',
+              backgroundColor: bg,
+              pressedColor: pressed,
+            ),
+            FSuper(
+              key: const ValueKey('second'),
+              width: 100,
+              height: 40,
+              text: 'b',
+              backgroundColor: bg,
+              pressedColor: pressed,
+            ),
+          ]),
+        ),
+      ));
+      await tester.pumpAndSettle();
+
+      // Press only the first one; the second must stay unhighlighted.
+      final gesture = await tester
+          .startGesture(tester.getCenter(find.byKey(const ValueKey('first'))));
+      await tester.pumpAndSettle();
+
+      expect(paintedBackgroundColors(tester), contains(pressed),
+          reason: 'the pressed sibling shows the pressed colour');
+      expect(
+        paintedBackgroundColors(tester).where((c) => c == bg).length,
+        greaterThanOrEqualTo(1),
+        reason: 'the untouched sibling keeps its background colour',
+      );
+
+      await gesture.up();
+      await tester.pumpAndSettle();
+      expect(paintedBackgroundColors(tester), isNot(contains(pressed)));
+    });
+
+    testWidgets('key still works alongside child1 / child2', (tester) async {
+      const k = ValueKey<String>('with-children');
+      await tester.pumpWidget(host(FSuper(
+        key: k,
+        width: 200,
+        height: 60,
+        text: 'root',
+        child1: SizedBox(width: 40, height: 20, child: Text('c1')),
+        child1Alignment: Alignment.centerLeft,
+        child2: SizedBox(width: 40, height: 20, child: Text('c2')),
+        child2Alignment: Alignment.centerRight,
+      )));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(k), findsOneWidget);
+      expect(tester.takeException(), isNull);
+      expect(find.text('c1'), findsOneWidget);
+      expect(find.text('c2'), findsOneWidget);
     });
   });
 }
